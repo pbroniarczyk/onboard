@@ -5,17 +5,19 @@
 // COMPONTENTS
 @import 'navbar'
 @import 'board'
-
+@import 'rocket'
+@import 'cover'
+@import 'steps'
 
 // GLOBAL
+html,
+body,
+#app,
+.wrapper
+    height: 100%
+
 body
-    background:
-        color: $bg-color
-        image: url('../img/bg.png')
-        size: cover
-        repeat: no-repeat
-        position-y: bottom
-    min-height: 100vh
+    background-color: $bg-color
     font-family: 'Roboto', sans-serif
     margin: 0
     padding: 0
