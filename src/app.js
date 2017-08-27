@@ -2,21 +2,22 @@ import './css/main.sass';
 import React from 'react';
 import { render } from 'react-dom';
 
+// Component
+import { Navbar } from './components/Navbar';
+import { Board } from './components/Board';
+
 class App extends React.Component {
-  render() {
-    return(
-      <div className="container-fluid">
-        <ul className="list">
-          <li className="list__item">item 1</li>
-          <li className="list__item">item 2</li>
-          <li className="list__item list__item--last">item 3</li>
-        </ul>
-      </div>
-    );
-  }
+    render() {
+        return(
+            <div className="wrapper">
+                <Navbar/>
+                <Board/>
+            </div>
+        );
+    }
 }
 
 render(
-  <App/>,
-  document.getElementById('app')
+    <App/>,
+    document.getElementById('app')
 ); 
