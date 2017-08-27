@@ -8,7 +8,7 @@ var extractTextPlugin = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: './src/js/index.js',
+    entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -20,7 +20,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015']
+                        presets: ['es2015', 'stage-2', 'react']
                     }
                 }
             },{
