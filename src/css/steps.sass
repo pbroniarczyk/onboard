@@ -1,2 +1,25 @@
 #steps-wrapper
     width: 464px
+    padding: 45px 45px 25px 70px
+
+    .step
+        padding-right: 55px
+
+        input[type="text"]
+            width: 100%
+            box-sizing: border-box
+            height: 27px
+            border: none
+            border-bottom: 1px solid $light_gray
+            &:focus
+                outline: transparent
+
+.step-header
+    margin-bottom: 40px
+
+    +elm('title')
+        margin: 0
+        font-size: 20px
+
+    +elm('subtitle')
+        margin: 0
