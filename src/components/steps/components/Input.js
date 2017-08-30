@@ -7,9 +7,10 @@ export class Input extends React.Component {
     return (
       <div>
         <AutoComplete 
-            dataSource={this.props.dataSource}
-            name='position'
-            hintText={this.props.hintText}
+            dataSource = {this.props.dataSource}
+            name = 'position'
+            hintText = {this.props.hintText}
+            fullWidth = {true}
         />
       </div>
     );

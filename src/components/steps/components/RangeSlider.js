@@ -17,15 +17,16 @@ export class RangeSlider extends Component {
 
     render() {
         return (
-            <div>
+            <div className="slider-wrapper">
                 <Slider
+                    className="slider-wrapper__slider"
                     min={0}
                     max={20}
                     step={1}
                     value={this.state.rangeValue}
                     onChange={this.handleChange}
                 />
-                <span>{this.state.rangeValue}</span>
+                <span className="slider-wrapper__bubbel" >{this.state.rangeValue}</span>
             </div>
         );
     }
