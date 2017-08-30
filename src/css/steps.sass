@@ -1,0 +1,57 @@
+#steps-wrapper
+    width: 464px
+    padding: 45px 45px 25px 70px
+
+    .step
+        padding-right: 55px
+
+        input[type="text"]
+            width: 100%
+            box-sizing: border-box
+            height: 27px
+            border: none
+            border-bottom: 1px solid $light_gray
+            &:focus
+                outline: transparent
+
+.step-header
+    margin-bottom: 40px
+
+    +elm('title')
+        margin: 0
+        font-size: 20px
+
+    +elm('subtitle')
+        margin: 0
+
+.slider-wrapper__slider > div 
+    height: 30px!important
+    margin: 7px 0 0 0!important
+
+.slider-wrapper
+    display: flex
+
+    +elm(slider)
+        width: 100%
+
+    +elm('bubbel')
+        min-width: 80px
+        height: auto
+        margin-left: 20px
+        border: 1px solid $light_gray
+        border-radius: 3px
+        text-align: center
+        line-height: 2
+        position: relative
+        &::before
+            content: ''
+            position: absolute
+            top: 10px
+            left: -8px
+            transform: rotate(-45deg)
+            background-color: white
+            display: block
+            width: 13px
+            height: 13px
+            border-left: 1px solid lightgray
+            border-top: 1px solid lightgray

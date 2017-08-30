@@ -1,0 +1,29 @@
+.rocket-container
+    width: 53px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+
+    +elm('rocket')
+        width: 24px
+        height: 26px
+        margin: 0 auto
+
+.track-container
+    height: 475px
+
+    +elm('track')
+        display: block
+        margin: 0 auto
+        width: 1px
+        height: calc(475px / 5)
+        background-color: $light_gray
+        &::after
+            content: ''
+            display: block
+            width: 12px
+            height: 12px
+            background-color: $light_gray
+            transform: translateX(-10.5px)
+            border: 5px solid #fff
+            border-radius: 100%

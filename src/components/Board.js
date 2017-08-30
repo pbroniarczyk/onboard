@@ -1,11 +1,20 @@
 import React from 'react';
 
+// Components
+import { Cover } from './Cover';
+import { Steps } from './Steps';
+import { Rocket } from './Rocket';
+
 export class Board extends React.Component {
     render() {
         return(
-            <div className="board">
-                test
-            </div>
+            <section className="board-section">
+                <div className="board">
+                    <Cover />
+                    <Rocket />
+                    <Steps />
+                </div>
+            </section>
         )
     }
 }
