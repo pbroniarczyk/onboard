@@ -3,6 +3,7 @@ import React from 'react';
 // Components
 import StepHeader from './components/StepHeader';
 import { Input } from './components/Input';
+import { RangeSlider } from './components/RangeSlider';
 
 export class Step1 extends React.Component {
     render() {
@@ -22,6 +23,8 @@ export class Step1 extends React.Component {
                 <StepHeader />
                 <Input dataSource={dataSource[0].positions} hintText={inputHint[0]} />
                 <Input dataSource={dataSource[1].cities} hintText={inputHint[1]} />
+                <RangeSlider />
+                <RangeSlider />
             </div>
         )
     }

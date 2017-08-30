@@ -4,8 +4,6 @@ import AutoComplete from 'material-ui/AutoComplete';
 
 export class Input extends React.Component {
   render() {
-    console.log(this.props.dataSource);
-
     return (
       <div>
         <AutoComplete 
