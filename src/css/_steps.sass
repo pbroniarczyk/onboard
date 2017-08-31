@@ -33,9 +33,14 @@
 
 .slider-wrapper
     display: flex
+    transition: $transition
 
     +elm(slider)
         width: 100%
+
+        +mod(--hidden)
+            opacity: 0
+            height: 0
 
     +elm('bubbel')
         min-width: 80px
