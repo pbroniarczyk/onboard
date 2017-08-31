@@ -3,17 +3,16 @@ import Slider from 'material-ui/Slider';
 
 
 export class RangeSlider extends Component {
-    constructor() {
-        super();
-        this.state = {rangeValue : 0};
+    constructor(props) {
+        super(props)
+        this.state = {
+            rangeValue: 0,
+        };
     }
 
-    handleChange() {
-        console.log(value)
-        this.setState({
-            rangeValue: value
-        })
-    }
+    handleChange = (event, value) => {
+        this.setState({rangeValue: value});
+    };
 
     render() {
         return (

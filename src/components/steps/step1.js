@@ -8,15 +8,17 @@ import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-const validateStep = () => console.log(this.state);
-
-
 export class Step1 extends React.Component {
     constructor() {
         super();
         this.state = {
             disabled: false
         };
+    }
+
+    handleChange(event) {
+        let value = event.target.value;
+        console.log(value);
     }
 
     render() {
@@ -40,8 +42,8 @@ export class Step1 extends React.Component {
                 <StepHeader title={title[0].title} subtitle={title[1].subtitle} />
                 <div className="step-body">
                     <div className="input-wrapper">
-                        <Input id="positions" dataSource={dataSource[0].positions} hintText={inputHint[0]} />
-                        <Input id="cities" dataSource={dataSource[1].cities} hintText={inputHint[1]} />                        
+                        <input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
+                        <input type="text" id="cities" placeholder="Miasto" />
                     </div>
 
                     <Checkbox className="step-body__checkbox" label="Możliwość relokacji" />
