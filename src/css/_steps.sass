@@ -1,6 +1,7 @@
 #steps-wrapper
     width: 464px
     padding: 45px 45px 25px 70px
+    box-sizing: border-box
 
     .step
         padding-right: 55px
@@ -15,7 +16,7 @@
                 outline: transparent
 
 .step-header
-    margin-bottom: 40px
+    margin-bottom: 20px
 
     +elm('title')
         margin: 0
@@ -55,3 +56,18 @@
             height: 13px
             border-left: 1px solid lightgray
             border-top: 1px solid lightgray
+
+.step-body
+    +elm('checkbox')
+        padding: 10px 0 5px
+
+    +elm('text')
+        margin: 0
+        height: 35px
+        line-height: 3
+        font-size: 14px
+
+.btn-group
+    transform: translate(60px, 10px)
+    display: flex
+    justify-content: flex-end
