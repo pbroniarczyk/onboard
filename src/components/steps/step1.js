@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import { StepHeader } from './components/StepHeader';
+import { BoardHeader } from '../BoardHeader';
 import { RangeSlider } from './components/RangeSlider';
 import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
@@ -66,14 +66,9 @@ export class Step1 extends React.Component {
             'Miasto'
         ];
 
-        const title = [
-            { title: 'Twoje doświadczenie' },
-            { subtitle: 'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.' }
-        ]
-
         return(
             <div className="step step1">
-                <StepHeader title={title[0].title} subtitle={title[1].subtitle} />
+                <StepHeader title={'Twoje doświadczenie'} subtitle={'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
                         <input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
