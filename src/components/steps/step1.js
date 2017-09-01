@@ -8,6 +8,11 @@ import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
+const sliderStyle = {
+    backgroundColor: '#ff0000'
+};
+
+
 export class Step1 extends React.Component {
     constructor() {
         super();
@@ -16,6 +21,7 @@ export class Step1 extends React.Component {
         };
     }
 
+    // validate inputs & allow moving to the nest step
     handleChange(event) {
         let value = event.target.value,
             inputs = document.querySelectorAll('input[type=text]');
@@ -34,13 +40,15 @@ export class Step1 extends React.Component {
         }, this);
     }
 
+    // Hide & display sliders on checking propper checkboxex
     handleCheck(event, isInputChecked) {
         const hiddenNode = event.target.parentNode.previousSibling;
         let sliderVal = event.target.parentNode.previousSibling.childNodes[0].childNodes[1].value;
 
         if (isInputChecked) {
+            // When is checked set value of this slider to 0. When is unchecked set back value provided by user
             hiddenNode.classList.add('slider-wrapper--hidden');
-            sliderVal = 0;
+            sliderVal = 0; 
             
         } else {
             hiddenNode.classList.remove('slider-wrapper--hidden');
@@ -67,21 +75,21 @@ export class Step1 extends React.Component {
             <div className="step step1">
                 <StepHeader title={title[0].title} subtitle={title[1].subtitle} />
                 <div className="step-body">
-                    <div className="input-wrapper">
+                    <div className="step-body__input-wrapper">
                         <input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
                         <input onChange={this.handleChange.bind(this)} type="text" id="cities" placeholder="Miasto" />
                     </div>
 
-                    <Checkbox className="step-body__checkbox" label="Możliwość relokacji" onCheck={this.handleCheck.bind(this)} />
+                    <Checkbox className="step-body__checkbox" label="Możliwość relokacji" />
 
                     <div>
                         <p className="step-body__text">Lata doświadczenie w zawodzie</p>
-                        <RangeSlider />
+                        <RangeSlider style={sliderStyle} />
                         <Checkbox className="step-body__checkbox" label="Nie mam doświdczenia" onCheck={this.handleCheck.bind(this)} />
                     </div>
                     <div>
                         <p className="step-body__text">Staż w obecnym miejscu pracy</p>
-                        <RangeSlider />
+                        <RangeSlider style={sliderStyle} />
                         <Checkbox className="step-body__checkbox" label="Nie pracuję" onCheck={this.handleCheck.bind(this)} />
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+// Main step & indexStep styles
 #steps-wrapper
     width: 464px
     padding: 45px 45px 25px 70px
@@ -5,11 +6,16 @@
 
     .step
         padding-right: 55px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        height: 100%
 
         input[type="text"]
             width: 100%
             box-sizing: border-box
             height: 36px
+            margin-bottom: 1px
             border: none
             border-bottom: 2px solid $light_gray
             transition: $transition
@@ -27,48 +33,9 @@
     +elm('subtitle')
         margin: 0
 
-.slider-wrapper__slider > div 
-    height: 30px!important
-    margin: 7px 0 0 0!important
-
-.slider-wrapper--hidden
-    transition: $transition
-    opacity: 0
-    height: 0
-
-.slider-wrapper
-    display: flex
-    transition: $transition
-    +mod('--hidden')
-        opacity: 0
-        height: 0
-
-    +elm('slider')
-        width: 100%
-
-    +elm('bubbel')
-        min-width: 80px
-        height: auto
-        margin-left: 20px
-        border: 1px solid $light_gray
-        border-radius: 3px
-        text-align: center
-        line-height: 2
-        position: relative
-        &::before
-            content: ''
-            position: absolute
-            top: 10px
-            left: -8px
-            transform: rotate(-45deg)
-            background-color: white
-            display: block
-            width: 13px
-            height: 13px
-            border-left: 1px solid lightgray
-            border-top: 1px solid lightgray
-
 .step-body
+    min-height: 348px
+    
     +elm('checkbox')
         padding: 10px 0 5px
 
@@ -78,7 +45,51 @@
         line-height: 3
         font-size: 14px
 
+    +elm('input-wrapper')
+        margin-bottom: 15px
+
+    .slider-wrapper__slider > div 
+        height: 30px!important
+        margin: 7px 0 0 0!important
+
+    .slider-wrapper--hidden
+        transition: $transition
+        opacity: 0
+        height: 0
+
+    .slider-wrapper
+        display: flex
+        transition: $transition
+        +mod('--hidden')
+            opacity: 0
+            height: 0
+
+        +elm('slider')
+            width: 100%
+
+        +elm('bubbel')
+            min-width: 80px
+            height: auto
+            margin-left: 20px
+            border: 1px solid $light_gray
+            border-radius: 3px
+            text-align: center
+            line-height: 2
+            position: relative
+            &::before
+                content: ''
+                position: absolute
+                top: 10px
+                left: -8px
+                transform: rotate(-45deg)
+                background-color: white
+                display: block
+                width: 13px
+                height: 13px
+                border-left: 1px solid lightgray
+                border-top: 1px solid lightgray
+
 .btn-group
-    transform: translate(60px, 10px)
+    transform: translateX(55px)
     display: flex
     justify-content: flex-end
