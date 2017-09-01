@@ -31,16 +31,20 @@
     height: 30px!important
     margin: 7px 0 0 0!important
 
+.slider-wrapper--hidden
+    transition: $transition
+    opacity: 0
+    height: 0
+
 .slider-wrapper
     display: flex
     transition: $transition
+    +mod('--hidden')
+        opacity: 0
+        height: 0
 
-    +elm(slider)
+    +elm('slider')
         width: 100%
-
-        +mod(--hidden)
-            opacity: 0
-            height: 0
 
     +elm('bubbel')
         min-width: 80px
