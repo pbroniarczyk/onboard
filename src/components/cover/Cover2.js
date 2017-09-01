@@ -16,7 +16,7 @@ export class Cover2 extends React.Component {
                             <p className="section__subtitle">1-2 lata doświadczenia</p>
                         </div>
                         <div className="section">
-                            <h1 className="section__title">5600zł - 9300xł</h1>
+                            <h1 className="section__title">5600zł - 9300zł</h1>
                             <p className="section__subtitle">Rekomendowany przedział zarobków</p>
                         </div>
                         <div className="section">

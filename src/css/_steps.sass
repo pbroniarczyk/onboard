@@ -11,7 +11,7 @@
         justify-content: space-between
         height: 100%
 
-        input[type="text"]
+        input
             width: 100%
             box-sizing: border-box
             height: 36px
@@ -21,7 +21,7 @@
             transition: $transition
             &:focus
                 outline: transparent
-                border-bottom: 2px solid $accent_blue
+                border-bottom: 2px solid #00bcd4
 
 .step-body
     min-height: 348px
@@ -83,3 +83,12 @@
     transform: translateX(55px)
     display: flex
     justify-content: flex-end
+
+
+// Step 1
+.section-wrapper
+    margin-top: 40px
+
+    +elm('title')
+        margin: 0
+        margin-bottom: 10px

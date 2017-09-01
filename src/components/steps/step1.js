@@ -8,11 +8,6 @@ import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-const sliderStyle = {
-    backgroundColor: '#ff0000'
-};
-
-
 export class Step1 extends React.Component {
     constructor() {
         super();
@@ -68,7 +63,7 @@ export class Step1 extends React.Component {
 
         return(
             <div className="step step1">
-                <StepHeader title={'Twoje doświadczenie'} subtitle={'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.'} />
+                <BoardHeader title={'Twoje doświadczenie'} subtitle={'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
                         <input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
@@ -79,12 +74,12 @@ export class Step1 extends React.Component {
 
                     <div>
                         <p className="step-body__text">Lata doświadczenie w zawodzie</p>
-                        <RangeSlider style={sliderStyle} />
+                        <RangeSlider />
                         <Checkbox className="step-body__checkbox" label="Nie mam doświdczenia" onCheck={this.handleCheck.bind(this)} />
                     </div>
                     <div>
                         <p className="step-body__text">Staż w obecnym miejscu pracy</p>
-                        <RangeSlider style={sliderStyle} />
+                        <RangeSlider />
                         <Checkbox className="step-body__checkbox" label="Nie pracuję" onCheck={this.handleCheck.bind(this)} />
                     </div>
                 </div>
