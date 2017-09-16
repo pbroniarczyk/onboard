@@ -80,7 +80,7 @@ export class Step1 extends React.Component {
                 </div>
 
                 <div className="btn-group">
-                    <RaisedButton className="btn-group__next-btn" label="następny krok" secondary={true} disabled={this.state.disabled}/>
+                    <RaisedButton onClick={this.props.nextStepHandler} className="btn-group__next-btn" label="następny krok" secondary={true} disabled={this.state.disabled}/>
                 </div>
             </div>
         )

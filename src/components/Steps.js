@@ -13,11 +13,25 @@ export class Steps extends React.Component {
     }
 
     render() {
-        return(
-            <section id="steps-wrapper">
-                <Step1 />
-                <Step2 />
-            </section>
-        )
+        switch (this.props.step) {
+            case 1:
+                return(
+                    <section id="steps-wrapper">
+                        <Step1 nextStepHandler={this.props.nextStep} />
+                    </section>
+                )
+                break;
+
+            case 2:
+                return(
+                    <section id="steps-wrapper">
+                        <Step2 nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
+                    </section>
+                )
+                break;
+        
+            default:
+                break;
+        }
     }
 }

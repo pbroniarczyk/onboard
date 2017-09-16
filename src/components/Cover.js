@@ -6,11 +6,29 @@ import { Cover2 } from './cover/Cover2';
 
 export class Cover extends React.Component {
     render() {
-        return(
-            <section id="cover">
-                <Cover1 />
-                <Cover2 />
-            </section>
-        );
+        switch (this.props.step) {
+            case 1:
+                return(
+                    <section id="cover">
+                        <Cover1 />
+                    </section>
+                );
+                break;
+            case 2:
+                return(
+                    <section id="cover">
+                        <Cover2 />
+                    </section>
+                );
+                break;
+        
+            default:
+                return(
+                    <section id="cover">
+                        DEFAULT
+                    </section>
+                );
+                break;
+        }
     }
 }
