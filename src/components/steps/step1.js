@@ -56,11 +56,6 @@ export class Step1 extends React.Component {
             { cities: ['Warszawa', 'Wrocław', 'Kraków', 'Poznań'] }
         ];
 
-        const inputHint = [
-            'Nazwa stanowiska',
-            'Miasto'
-        ];
-
         return(
             <div className="step step1">
                 <BoardHeader title={'Twoje doświadczenie'} subtitle={'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.'} />

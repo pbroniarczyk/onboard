@@ -16,7 +16,7 @@ const theme = getMuiTheme({
 });
 
 // Component
-import { Navbar } from './components/Navbar';
+import Navbar from './components/Navbar';
 import { Board } from './components/Board';
 
 class App extends React.Component {

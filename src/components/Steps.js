@@ -15,7 +15,7 @@ export class Steps extends React.Component {
     render() {
         return(
             <section id="steps-wrapper">
-                
+                <Step1 />
                 <Step2 />
             </section>
         )
