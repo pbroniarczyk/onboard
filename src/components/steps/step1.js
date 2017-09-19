@@ -1,16 +1,11 @@
 import React from 'react';
 
 // Components
-import { StepHeader } from './components/StepHeader';
+import { BoardHeader } from '../BoardHeader';
 import { RangeSlider } from './components/RangeSlider';
 import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
-
-
-const sliderStyle = {
-    backgroundColor: '#ff0000'
-};
 
 
 export class Step1 extends React.Component {
@@ -61,19 +56,9 @@ export class Step1 extends React.Component {
             { cities: ['Warszawa', 'Wrocław', 'Kraków', 'Poznań'] }
         ];
 
-        const inputHint = [
-            'Nazwa stanowiska',
-            'Miasto'
-        ];
-
-        const title = [
-            { title: 'Twoje doświadczenie' },
-            { subtitle: 'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.' }
-        ]
-
         return(
             <div className="step step1">
-                <StepHeader title={title[0].title} subtitle={title[1].subtitle} />
+                <BoardHeader title={'Twoje doświadczenie'} subtitle={'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
                         <input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
@@ -84,18 +69,18 @@ export class Step1 extends React.Component {
 
                     <div>
                         <p className="step-body__text">Lata doświadczenie w zawodzie</p>
-                        <RangeSlider style={sliderStyle} />
+                        <RangeSlider />
                         <Checkbox className="step-body__checkbox" label="Nie mam doświdczenia" onCheck={this.handleCheck.bind(this)} />
                     </div>
                     <div>
                         <p className="step-body__text">Staż w obecnym miejscu pracy</p>
-                        <RangeSlider style={sliderStyle} />
+                        <RangeSlider />
                         <Checkbox className="step-body__checkbox" label="Nie pracuję" onCheck={this.handleCheck.bind(this)} />
                     </div>
                 </div>
 
                 <div className="btn-group">
-                    <RaisedButton className="btn-group__next-btn" label="następny krok" secondary={true} disabled={this.state.disabled}/>
+                    <RaisedButton onClick={this.props.nextStepHandler} className="btn-group__next-btn" label="następny krok" secondary={true} disabled={this.state.disabled}/>
                 </div>
             </div>
         )

@@ -1,14 +1,34 @@
 import React from 'react';
 
 // Components
-import CoverIndex from './cover/CoverIndex';
+import Cover1 from './cover/Cover1';
+import { Cover2 } from './cover/Cover2';
 
 export class Cover extends React.Component {
     render() {
-        return(
-            <section id="cover">
-                <CoverIndex />
-            </section>
-        );
+        switch (this.props.step) {
+            case 1:
+                return(
+                    <section id="cover">
+                        <Cover1 />
+                    </section>
+                );
+                break;
+            case 2:
+                return(
+                    <section id="cover">
+                        <Cover2 />
+                    </section>
+                );
+                break;
+        
+            default:
+                return(
+                    <section id="cover">
+                        DEFAULT
+                    </section>
+                );
+                break;
+        }
     }
 }

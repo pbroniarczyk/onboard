@@ -1,7 +1,7 @@
 // Main step & indexStep styles
 #steps-wrapper
     width: 464px
-    padding: 45px 45px 25px 70px
+    padding: 25px 45px 25px 70px
     box-sizing: border-box
 
     .step
@@ -11,7 +11,7 @@
         justify-content: space-between
         height: 100%
 
-        input[type="text"]
+        input
             width: 100%
             box-sizing: border-box
             height: 36px
@@ -21,17 +21,7 @@
             transition: $transition
             &:focus
                 outline: transparent
-                border-bottom: 2px solid $accent_blue
-
-.step-header
-    margin-bottom: 20px
-
-    +elm('title')
-        margin: 0
-        font-size: 20px
-
-    +elm('subtitle')
-        margin: 0
+                border-bottom: 2px solid #00bcd4
 
 .step-body
     min-height: 348px
@@ -93,3 +83,12 @@
     transform: translateX(55px)
     display: flex
     justify-content: flex-end
+
+
+// Step 1
+.section-wrapper
+    margin-top: 40px
+
+    +elm('title')
+        margin: 0
+        margin-bottom: 10px
