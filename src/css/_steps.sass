@@ -92,3 +92,38 @@
     +elm('title')
         margin: 0
         margin-bottom: 10px
+
+// Step 3
+.path
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 14px 20px
+    border: 1px solid $light_gray
+    margin-bottom: 10px
+    color: $dark_gray
+    font:
+        size: 17px
+        weight: bold
+    &:last-child
+        margin-bottom: 0
+    &:hover
+        cursor: pointer
+
+    +elm('checkbox')
+        width: 24px!important
+
+    +mod('checked')
+        background-color: $accent_blue
+
+.path--checked
+    .path__percentage,
+    .path__title
+        color: #fff
+
+.careerPath-desc
+    color: $dark_gray
+    font-size: 11px
+    display: block
+    margin-left: auto
+    text-align: right
