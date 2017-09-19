@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 // Components
 import Checkbox from 'material-ui/Checkbox';
@@ -18,13 +19,12 @@ export default class CareerPath extends React.Component {
         });
     }
 
-    render() {
-        console.log(this.state.checked);
+    render() {        
         return(
-            <div className={'path ' + this.state.class} onClick={this.checkHandler.bind(this)}>
+            <div className={classNames('path', { 'path--checked': this.state.checked})} onClick={this.checkHandler.bind(this)}>
                 <span className="path__percentage">38%</span>
                 <span className="path__title">Front-End Developer</span>
-                <Checkbox className="path__checkbox" />
+                <Checkbox className="path__checkbox" checked={this.state.checked} />
             </div>
         );
     }
