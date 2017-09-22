@@ -92,3 +92,67 @@
     +elm('title')
         margin: 0
         margin-bottom: 10px
+
+// Step 3
+.path
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 14px 20px
+    border: 1px solid $light_gray
+    margin-bottom: 10px
+    color: $dark_gray
+    font:
+        size: 17px
+        weight: bold
+    transition: $transition
+    &:last-child
+        margin-bottom: 0
+    &:hover
+        cursor: pointer
+
+    +elm('checkbox')
+        width: 24px!important
+
+    +mod('checked')
+        background-color: $accent_blue
+
+.path--checked
+    .path__percentage,
+    .path__title
+        color: #fff
+
+.careerPath-desc
+    color: $dark_gray
+    font-size: 11px
+    display: block
+    margin-left: auto
+    text-align: right
+
+// Step 4
+.skill-cloud
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: 30px
+
+    +elm('item')
+        font-size: 12px
+        border: 1px solid $light_gray
+        border-radius: 3px
+        padding: 10px
+        color: $dark_gray
+        margin:
+            right: 5px
+            bottom: 6px
+        &:hover
+            cursor: pointer
+
+.skill
+    background: $light_gray
+    width: 137px
+    display: inline-block
+    height: 28px
+    margin:
+        bottom: 3px
+        right: 7px
+    border: 1px solid $light_gray
