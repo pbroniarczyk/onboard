@@ -27,7 +27,7 @@ export class Step3 extends React.Component {
                 </div>
                 <div className="btn-group">
                     <RaisedButton onClick={this.props.prevStepHandler} className="btn-group__prev-btn" label="poprzedni krok" default={true}/>
-                    <RaisedButton className="btn-group__next-btn" label="następny krok" secondary={true} disabled={this.state.disabled}/>
+                    <RaisedButton className="btn-group__next-btn" label="następny krok" primary={true} disabled={this.state.disabled}/>
                 </div>
             </div>
         )

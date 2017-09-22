@@ -128,3 +128,31 @@
     display: block
     margin-left: auto
     text-align: right
+
+// Step 4
+.skill-cloud
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: 30px
+
+    +elm('item')
+        font-size: 12px
+        border: 1px solid $light_gray
+        border-radius: 3px
+        padding: 10px
+        color: $dark_gray
+        margin:
+            right: 5px
+            bottom: 6px
+        &:hover
+            cursor: pointer
+
+.skill
+    background: $light_gray
+    width: 137px
+    display: inline-block
+    height: 28px
+    margin:
+        bottom: 3px
+        right: 7px
+    border: 1px solid $light_gray
