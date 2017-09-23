@@ -5,6 +5,7 @@ import { Step1 } from './steps/Step1';
 import { Step2 } from './steps/Step2';
 import { Step3 } from './steps/Step3';
 import { Step4 } from './steps/Step4';
+import { Step5 } from './steps/Step5';
 
 export class Steps extends React.Component {
     constructor() {
@@ -44,6 +45,14 @@ export class Steps extends React.Component {
                 return(
                     <section id="steps-wrapper">
                         <Step4 nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
+                    </section>
+                )
+                break;
+
+            case 5:
+                return(
+                    <section id="steps-wrapper">
+                        <Step5 prevStepHandler={this.props.prevStep}/>
                     </section>
                 )
                 break;

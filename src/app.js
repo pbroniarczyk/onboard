@@ -2,11 +2,16 @@ import './css/main.sass';
 import React from 'react';
 import { render } from 'react-dom';
 
+// Material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import blue500 from 'material-ui/styles/colors.js';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Component
+import Navbar from './components/Navbar';
+import { Board } from './components/Board';
+
 injectTapEventPlugin();
 
 const theme = getMuiTheme({
@@ -14,10 +19,6 @@ const theme = getMuiTheme({
         primary1Color: blue500,
     }
 });
-
-// Component
-import Navbar from './components/Navbar';
-import { Board } from './components/Board';
 
 class App extends React.Component {
     render() {

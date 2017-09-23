@@ -132,7 +132,7 @@
 // Step 4
 .step4 .step-body 
     transform: translateY(-40px)
-    
+
 .skill-cloud
     display: flex
     flex-wrap: wrap
@@ -191,4 +191,58 @@
         &:hover
             cursor: pointer
 
-        
+// Step5
+.step5 .step-body
+    min-height: 100%
+    display: flex
+    flex-direction: column
+
+    +elm('btn')
+        width: 300px
+        border-radius: 2px
+        border: none
+        margin-bottom: 15px
+        color: #fff
+        text-transform: uppercase
+        padding: 15px 0
+        box-sizing: border-box
+        &:last-child
+            margin-bottom: 0
+        &:hover
+            cursor: pointer
+
+    +mod('facebook')
+        background-color: #3b5998!important
+        color: #fff!important
+    +mod('linkedin')
+        background-color: #0077B5!important
+        color: #fff!important
+    +mod('signin')
+        margin-top: 25px
+        // button
+        //     background-color: $accent!important
+        //     span
+        //         color: #fff!important
+
+    .social
+        display: flex
+        flex-direction: column
+        margin: 45px 0
+
+    .separator
+        position: relative
+        text-align: center
+        color: $light_gray
+        margin-bottom: 15px
+        &::before
+            content: ''
+            position: absolute
+            top: 48%
+            display: block
+            width: 42%
+            height: 1px
+            background-color: $light_gray
+        &::after
+            @extend ::before
+            bottom: 47%
+            right: 0
