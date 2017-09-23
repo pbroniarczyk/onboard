@@ -6,7 +6,6 @@ import user_icon from '../img/icon_user.png';
 import logo from '../img/bluedot_logo.png';
 
 
-console.log(logo)
 const Navbar = () => {
   return(
     <nav className="navbar">
