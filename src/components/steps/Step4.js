@@ -4,7 +4,11 @@ import React from 'react';
 import { BoardHeader } from '../BoardHeader';
 import { Input } from './components/Input';
 import RaisedButton from 'material-ui/RaisedButton';
+import AutoComplete from 'material-ui/AutoComplete';
 
+const skills = [
+  'JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL',
+];
 
 export class Step4 extends React.Component {
     constructor() {
@@ -12,6 +16,21 @@ export class Step4 extends React.Component {
         this.state = {
             disabled: true
         };
+    }
+
+    inputSelectHandler() {
+        let skill = document.getElementById('skills').value;
+        const emptySkill = document.querySelectorAll('.skill--empty'),
+              skillCounter = document.querySelector('.skill-count');
+
+        emptySkill[0].classList.add('skill--full');
+        emptySkill[0].classList.remove('skill--empty');
+        emptySkill[0].innerText = skill;
+
+        let fullSkill = document.querySelectorAll('.skill--full');
+        skillCounter.innerText = fullSkill.length;
+
+        if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
     selectSkill(event) {
@@ -32,13 +51,19 @@ export class Step4 extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return(
             <div className="step step4">
                 <BoardHeader title={'Umiejętności'} subtitle={'Wyszukaj lub wybierz z listy najpopularniejszych główne umiejętności, które posiadasz.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
-                        <input type="text" id="skills" placeholder="Nazwa umiejętności" />
+                        <AutoComplete
+                            id="skills"
+                            floatingLabelText="Nazwa umiejętności"
+                            filter={AutoComplete.caseInsensitiveFilter}
+                            dataSource={skills}
+                            onClose={this.inputSelectHandler}
+                            menuCloseDelay={0}
+                        />
                     </div>
 
                     <div className="skill-cloud">
