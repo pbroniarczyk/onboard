@@ -26,6 +26,8 @@ export class Step4 extends React.Component {
         let fullSkill = document.querySelectorAll('.skill--full');
         skillCounter.innerText = fullSkill.length;
 
+        event.currentTarget.remove();
+
         if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
