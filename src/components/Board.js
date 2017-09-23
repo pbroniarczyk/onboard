@@ -19,12 +19,12 @@ export class Board extends React.Component {
 
     nextStep() {
         this.setState({
-            step: 2
+            step: this.state.step + 1
         });
     }
     prevStep() {
         this.setState({
-            step: 1
+            step: this.state.step - 1
         });
     }
 

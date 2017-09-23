@@ -14,24 +14,6 @@ export class Step4 extends React.Component {
         };
     }
 
-    handleChange(event) {
-        let value = event.target.value,
-            inputs = document.querySelectorAll('input[type=text]');
-
-        inputs.forEach(input => {
-            let inputVal = input.value,
-                validate = false;
-                
-            if (inputVal !== '') {
-                validate = true;
-                this.setState({disabled: false});
-            } else {
-                validate = false;
-                this.setState({disabled: true});
-            }
-        }, this);
-    }
-
     selectSkill(event) {
         const skillSelected = event.currentTarget.innerText,
               emptySkill = document.querySelectorAll('.skill--empty'),
@@ -43,15 +25,18 @@ export class Step4 extends React.Component {
 
         let fullSkill = document.querySelectorAll('.skill--full');
         skillCounter.innerText = fullSkill.length;
+
+        if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
     render() {
+        console.log(this.props)
         return(
             <div className="step step4">
                 <BoardHeader title={'Umiejętności'} subtitle={'Wyszukaj lub wybierz z listy najpopularniejszych główne umiejętności, które posiadasz.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
-                        <input onChange={this.handleChange.bind(this)} type="text" id="skills" placeholder="Nazwa umiejętności" />
+                        <input type="text" id="skills" placeholder="Nazwa umiejętności" />
                     </div>
 
                     <div className="skill-cloud">
