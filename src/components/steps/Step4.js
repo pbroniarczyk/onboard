@@ -32,6 +32,19 @@ export class Step4 extends React.Component {
         }, this);
     }
 
+    selectSkill(event) {
+        const skillSelected = event.currentTarget.innerText,
+              emptySkill = document.querySelectorAll('.skill--empty'),
+              skillCounter = document.querySelector('.skill-count');
+
+        emptySkill[0].classList.add('skill--full');
+        emptySkill[0].classList.remove('skill--empty');
+        emptySkill[0].innerText = skillSelected;
+
+        let fullSkill = document.querySelectorAll('.skill--full');
+        skillCounter.innerText = fullSkill.length;
+    }
+
     render() {
         return(
             <div className="step step4">
@@ -42,21 +55,25 @@ export class Step4 extends React.Component {
                     </div>
 
                     <div className="skill-cloud">
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>JavaScript</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Python</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>HTML</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>CSS3</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>React</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Sass</span>
                     </div>
 
-                    <p>Twoje umiejętności</p>
+                    <div className="skill-counter">
+                        <p>Twoje umiejętności</p>
+                        <p><span className="skill-count">0</span>/6</p>
+                    </div>
                     <div className="skill-wrapper">
-                        <span className="skill skill--full"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
                     </div>
 
                 </div>

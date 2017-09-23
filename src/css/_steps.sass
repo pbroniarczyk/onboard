@@ -139,7 +139,7 @@
         font-size: 12px
         border: 1px solid $light_gray
         border-radius: 3px
-        padding: 10px
+        padding: 5px 10px
         color: $dark_gray
         margin:
             right: 5px
@@ -147,12 +147,32 @@
         &:hover
             cursor: pointer
 
+.skill-counter
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+.skill-wrapper
+    display: flex
+    flex-wrap: wrap
+
 .skill
     background: $light_gray
     width: 137px
-    display: inline-block
+    display: block
     height: 28px
     margin:
-        bottom: 3px
+        bottom: 7px
         right: 7px
     border: 1px solid $light_gray
+    border-radius: 3px
+    box-sizing: border-box
+
+    +mod('full')
+        text-align: center
+        padding-top: 2px
+        color: #fff
+        background-color: $accent_blue
+        border: 1px solid $accent_blue
+        &:hover ::after
+            content: 'X'
