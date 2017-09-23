@@ -8,7 +8,6 @@ import { Rocket } from './Rocket';
 export class Board extends React.Component {
     constructor(props) {
         super(props);
-
         this.nextStep = this.nextStep.bind(this);
         this.prevStep = this.prevStep.bind(this);
 
@@ -19,12 +18,12 @@ export class Board extends React.Component {
 
     nextStep() {
         this.setState({
-            step: 2
+            step: this.state.step + 1
         });
     }
     prevStep() {
         this.setState({
-            step: 1
+            step: this.state.step - 1
         });
     }
 

@@ -4,7 +4,11 @@ import React from 'react';
 import { BoardHeader } from '../BoardHeader';
 import { Input } from './components/Input';
 import RaisedButton from 'material-ui/RaisedButton';
+import AutoComplete from 'material-ui/AutoComplete';
 
+const skills = [
+  'JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL',
+];
 
 export class Step4 extends React.Component {
     constructor() {
@@ -14,22 +18,36 @@ export class Step4 extends React.Component {
         };
     }
 
-    handleChange(event) {
-        let value = event.target.value,
-            inputs = document.querySelectorAll('input[type=text]');
+    inputSelectHandler() {
+        let skill = document.getElementById('skills').value;
+        const emptySkill = document.querySelectorAll('.skill--empty'),
+              skillCounter = document.querySelector('.skill-count');
 
-        inputs.forEach(input => {
-            let inputVal = input.value,
-                validate = false;
-                
-            if (inputVal !== '') {
-                validate = true;
-                this.setState({disabled: false});
-            } else {
-                validate = false;
-                this.setState({disabled: true});
-            }
-        }, this);
+        emptySkill[0].classList.add('skill--full');
+        emptySkill[0].classList.remove('skill--empty');
+        emptySkill[0].innerText = skill;
+
+        let fullSkill = document.querySelectorAll('.skill--full');
+        skillCounter.innerText = fullSkill.length;
+
+        if (fullSkill.length === 6) this.setState({disabled: false});
+    }
+
+    selectSkill(event) {
+        const skillSelected = event.currentTarget.innerText,
+              emptySkill = document.querySelectorAll('.skill--empty'),
+              skillCounter = document.querySelector('.skill-count');
+
+        emptySkill[0].classList.add('skill--full');
+        emptySkill[0].classList.remove('skill--empty');
+        emptySkill[0].innerText = skillSelected;
+
+        let fullSkill = document.querySelectorAll('.skill--full');
+        skillCounter.innerText = fullSkill.length;
+
+        event.currentTarget.remove();
+
+        if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
     render() {
@@ -38,25 +56,36 @@ export class Step4 extends React.Component {
                 <BoardHeader title={'Umiejętności'} subtitle={'Wyszukaj lub wybierz z listy najpopularniejszych główne umiejętności, które posiadasz.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
-                        <input onChange={this.handleChange.bind(this)} type="text" id="skills" placeholder="Nazwa umiejętności" />
+                        <AutoComplete
+                            id="skills"
+                            floatingLabelText="Nazwa umiejętności"
+                            filter={AutoComplete.caseInsensitiveFilter}
+                            dataSource={skills}
+                            onClose={this.inputSelectHandler}
+                            menuCloseDelay={0}
+                        />
                     </div>
 
                     <div className="skill-cloud">
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
-                        <span className="skill-cloud__item">JavaScript</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>JavaScript</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Python</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>HTML</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>CSS3</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>React</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Sass</span>
                     </div>
 
-                    <p>Twoje umiejętności</p>
+                    <div className="skill-counter">
+                        <p>Twoje umiejętności</p>
+                        <p><span className="skill-count">0</span>/6</p>
+                    </div>
                     <div className="skill-wrapper">
-                        <span className="skill skill--full"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
-                        <span className="skill skill--epty"></span>
+                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
+                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
+                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
+                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
+                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
+                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
                     </div>
 
                 </div>

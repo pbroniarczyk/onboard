@@ -29,6 +29,14 @@ export class Cover extends React.Component {
                     </section>
                 );
                 break;
+
+            case 4:
+                return(
+                    <section id="cover">
+                        <Cover3 />
+                    </section>
+                );
+                break;
         
             default:
                 return(
