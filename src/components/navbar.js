@@ -5,10 +5,12 @@ import msg_icon from '../img/icon_messenger.png';
 import user_icon from '../img/icon_user.png';
 import logo from '../img/bluedot_logo.png';
 
+
+console.log(logo)
 const Navbar = () => {
   return(
     <nav className="navbar">
-      <a className="navbar__logo" href="#">
+      <a className="navbar__logo" href="/">
         <img src={logo} alt="logo" />
       </a>
 
