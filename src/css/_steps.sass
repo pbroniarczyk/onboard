@@ -172,11 +172,20 @@
     &:nth-child(even)
         margin-right: 0
 
+    +elm('btn')
+        background-color: transparent
+        border: none
+        color: #fff
+        margin-left: 85%
+        cursor: pointer
+
     +mod('full')
         text-align: center
         padding-top: 2px
         color: #fff
         background-color: $accent_blue
         border: 1px solid $accent_blue
-        &:hover ::after
-            content: 'X'
+        &:hover
+            cursor: pointer
+
+        
