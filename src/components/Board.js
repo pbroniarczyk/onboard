@@ -8,7 +8,6 @@ import { Rocket } from './Rocket';
 export class Board extends React.Component {
     constructor(props) {
         super(props);
-
         this.nextStep = this.nextStep.bind(this);
         this.prevStep = this.prevStep.bind(this);
 
