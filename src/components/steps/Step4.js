@@ -80,12 +80,12 @@ export class Step4 extends React.Component {
                         <p><span className="skill-count">0</span>/6</p>
                     </div>
                     <div className="skill-wrapper">
-                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
-                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
-                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
-                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
-                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
-                        <span className="skill skill--empty"><button className="skill__btn" type="button">x</button></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty"></span>
                     </div>
 
                 </div>
