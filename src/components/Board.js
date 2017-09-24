@@ -12,7 +12,7 @@ export class Board extends React.Component {
         this.prevStep = this.prevStep.bind(this);
 
         this.state = {
-            step: 0
+            step: 1
         };
     }
 
@@ -28,6 +28,7 @@ export class Board extends React.Component {
     }
 
     render() {
+        console.log('board state: ', this.state);
         return(
             <section className="board-section">
                 <div className="board">

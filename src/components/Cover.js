@@ -9,28 +9,20 @@ import Cover5 from './cover/Cover5';
 export class Cover extends React.Component {
     render() {
         switch (this.props.step) {
-            case 0:
+            case 1:
                 return(
                     <section id="cover">
                         <Cover1 />
                     </section>
                 );
                 break;
-            case 1:
+            case 2:
                 return(
                     <section id="cover">
                         <Cover2 />
                     </section>
                 );
                 break;
-            case 2:
-                return(
-                    <section id="cover">
-                        <Cover3 />
-                    </section>
-                );
-                break;
-
             case 3:
                 return(
                     <section id="cover">
@@ -40,6 +32,14 @@ export class Cover extends React.Component {
                 break;
 
             case 4:
+                return(
+                    <section id="cover">
+                        <Cover3 />
+                    </section>
+                );
+                break;
+
+            case 5:
                 return(
                     <section id="cover">
                         <Cover5 prevStepHandler={this.props.prevStep} />

@@ -14,14 +14,10 @@ export class Rocket extends React.Component {
     }
 
     componentWillReceiveProps() {
-        console.log(this.props.appState);
+        console.log(this.props);
         let rocketPath = document.getElementsByClassName('track-container__track'),
             rocket = document.getElementById('rocket'),
             currentState = this.props.appState;
-
-        // if (currentState === 5) {
-        //     currentState = 4;
-        // }
         
         for (let index = 0; index < currentState; index++) {
             let track = rocketPath[index];
