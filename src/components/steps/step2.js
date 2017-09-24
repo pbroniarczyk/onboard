@@ -10,7 +10,7 @@ export class Step2 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: true
+            disabled: false
         };
     }
 
@@ -44,7 +44,7 @@ export class Step2 extends React.Component {
 
                 <div className="btn-group">
                     <RaisedButton onClick={this.props.prevStepHandler} className="btn-group__prev-btn" label="poprzedni krok" default={true}/>
-                    <RaisedButton className="btn-group__next-btn" label="następny krok" primary={true} disabled={this.state.disabled}/>
+                    <RaisedButton onClick={this.props.nextStepHandler} className="btn-group__next-btn" label="następny krok" primary={true} disabled={this.state.disabled}/>
                 </div>
             </div>
         )

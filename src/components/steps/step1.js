@@ -12,7 +12,7 @@ export class Step1 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: true
+            disabled: false
         };
     }
 

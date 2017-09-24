@@ -17,7 +17,7 @@ export class Steps extends React.Component {
 
     render() {
         switch (this.props.step) {
-            case 1:
+            case 0:
                 return(
                     <section id="steps-wrapper">
                         <Step1 nextStepHandler={this.props.nextStep} />
@@ -25,7 +25,7 @@ export class Steps extends React.Component {
                 )
                 break;
 
-            case 2:
+            case 1:
                 return(
                     <section id="steps-wrapper">
                         <Step2 nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
@@ -33,7 +33,7 @@ export class Steps extends React.Component {
                 )
                 break;
 
-            case 3:
+            case 2:
                 return(
                     <section id="steps-wrapper">
                         <Step3 nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
@@ -41,7 +41,7 @@ export class Steps extends React.Component {
                 )
                 break;
 
-            case 4:
+            case 3:
                 return(
                     <section id="steps-wrapper">
                         <Step4 nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
@@ -49,7 +49,7 @@ export class Steps extends React.Component {
                 )
                 break;
 
-            case 5:
+            case 4:
                 return(
                     <section id="steps-wrapper">
                         <Step5 prevStepHandler={this.props.prevStep}/>
