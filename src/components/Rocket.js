@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Assets
-import '../img/rocket.png';
-import '../img/cloud.png';
+import rocket from '../img/rocket.png';
+import cloud from '../img/cloud.png';
 
 export class Rocket extends React.Component {
     render() {
@@ -15,8 +15,8 @@ export class Rocket extends React.Component {
                 <span className="track-container__track"></span>
                 <span className="track-container__track"></span>
             </div>
-                <img className="rocket-container__rocket" src="../img/rocket.png" alt="rocket" />
-                <img className="rocket-container__cloud" src="../img/cloud.png" alt="cloud" />
+                <img className="rocket-container__rocket" src={rocket} alt="rocket" />
+                <img className="rocket-container__cloud" src={cloud} alt="cloud" />
             </div>
         )
     }
