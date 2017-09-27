@@ -4,6 +4,8 @@ import React from 'react';
 import { Cover } from './Cover';
 import { Steps } from './Steps';
 import { Rocket } from './Rocket';
+import Confirmed from './Confirmed';
+
 
 export class Board extends React.Component {
     constructor(props) {
@@ -28,15 +30,24 @@ export class Board extends React.Component {
     }
 
     render() {
-        console.log('board state: ', this.state);
-        return(
-            <section className="board-section">
-                <div className="board">
-                    <Cover step={this.state.step} prevStep={this.prevStep}/>
-                    <Rocket appState={this.state.step} />
-                    <Steps nextStep={this.nextStep} prevStep={this.prevStep} step={this.state.step} />
-                </div>
-            </section>
-        )
+        if(this.state.step !== 6) {
+            return(
+                <section className="board-section">
+                    <div className="board">
+                        <Cover step={this.state.step} prevStep={this.prevStep}/>
+                        <Rocket appState={this.state.step} />
+                        <Steps nextStep={this.nextStep} prevStep={this.prevStep} step={this.state.step} />
+                    </div>
+                </section>
+            )
+        } else {
+            return(
+                <section className="board-section">
+                    <div className="board">
+                        <Confirmed />
+                    </div>
+                </section>
+            )
+        }
     }
 }
