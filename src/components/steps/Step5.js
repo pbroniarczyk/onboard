@@ -25,12 +25,11 @@ export class Step5 extends React.Component {
         } else {
             this.setState({
                 disabled: true
-            })
+            });
         }
     }
 
     render() {
-
         const btnStyle = {
             padding: 0,
             borderRadius: '5px'
@@ -48,7 +47,13 @@ export class Step5 extends React.Component {
                         <input onChange={this.inputValidate.bind(this)} type="mail" id="user-mail" placeholder="E-mail" />
                         <input onChange={this.inputValidate.bind(this)} type="password" id="user-password" placeholder="Hasło" />
                     </section>
-                    <RaisedButton className="step-body__btn step-body--signin" style={btnStyle} primary={true} label="Wchodzę" disabled={this.state.disabled} />
+                    <RaisedButton 
+                        className="step-body__btn step-body--signin" 
+                        onClick={this.props.nextStepHandler}
+                        style={btnStyle} 
+                        primary={true} 
+                        label="Wchodzę" 
+                        disabled={this.state.disabled} />
                 </div>
             </div>
         )

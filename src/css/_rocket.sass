@@ -9,6 +9,7 @@
         width: 24px
         height: 26px
         margin: 0 auto
+        transition: $transition
 
 .track-container
     height: 450px
@@ -17,7 +18,7 @@
         display: block
         margin: 0 auto
         width: 1px
-        height: calc(475px / 5)
+        height: calc(445px / 4)
         background-color: $light_gray
         &::after
             content: ''
@@ -28,3 +29,8 @@
             transform: translateX(-10.5px)
             border: 5px solid #fff
             border-radius: 100%
+
+        +mod('completed')
+            background-color: $accent_blue
+            &::after
+                background-color: $accent_blue

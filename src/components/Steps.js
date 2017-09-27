@@ -52,7 +52,15 @@ export class Steps extends React.Component {
             case 5:
                 return(
                     <section id="steps-wrapper">
-                        <Step5 prevStepHandler={this.props.prevStep}/>
+                        <Step5 nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
+                    </section>
+                )
+                break;
+
+            case 6:
+                return(
+                    <section id="steps-wrapper">
+                        <Step6 />
                     </section>
                 )
                 break;
