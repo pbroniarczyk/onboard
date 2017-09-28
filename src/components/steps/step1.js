@@ -59,9 +59,6 @@ export class Step1 extends React.Component {
                 <BoardHeader title={'Twoje doświadczenie'} subtitle={'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
-                        {/*<input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
-                        <input onChange={this.handleChange.bind(this)} type="text" id="cities" placeholder="Miasto" />*/}
-
                         <AutoComplete
                             ref="acomp1"
                             id="positions"

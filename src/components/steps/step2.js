@@ -6,13 +6,35 @@ import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
 
 export class Step2 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false
+            disabled: true,
+            value: '',
+            error: ''
         };
+    }
+
+    handleChange(event) {
+        console.log(this.state.value);
+        this.setState({
+            value: event.target.value
+        });
+
+        if (this.state.value < 1000 || this.state.value > 99999) {
+            this.setState({
+                error: 'Wprowadź poprawną kwotę',
+                disabled: true
+            });
+        } else {
+            this.setState({
+                error: '',
+                disabled: false
+            });
+        }
     }
 
     render() {
@@ -21,7 +43,16 @@ export class Step2 extends React.Component {
                 <BoardHeader title={'Warunki współpracy'} subtitle={'Zdecyduj, ile chcesz zarabiasz i określ warunki swojego zatrudnienia.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
-                        <input type="number" name="minSalary" placeholder="Minimalne oczekiwania finansowe (netto)" step="100" />
+                        <TextField
+                            onChange={this.handleChange.bind(this)} 
+                            value={this.state.value} 
+                            type="number" 
+                            name="minSalary" 
+                            hintText="Minimalne oczekiwania finansowe (netto)" 
+                            step="100"
+                            errorText={this.state.error}
+                        />
+                        {/*<input onChange={this.handleChange.bind(this)} value={this.state.value} type="number" name="minSalary" placeholder="Minimalne oczekiwania finansowe (netto)" step="100" />*/}
                     </div>
 
                     <section className="section-wrapper">
