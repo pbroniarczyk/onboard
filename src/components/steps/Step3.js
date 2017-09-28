@@ -15,8 +15,16 @@ export class Step3 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false
+            disabled: true,
+            path1: false,
+            path2: false,
+            path3: false,
+            path4: false
         };
+    }
+
+    handleCheck(event) {
+        console.log(this)
     }
 
     render() {
@@ -24,7 +32,7 @@ export class Step3 extends React.Component {
             <div className="step step3">
                 <BoardHeader title={'Ścieżki kariery'} subtitle={'Wybierz stanowisko, na którym chcesz się znaleźć po zdobyciu większego doświadczenia i umiejętności.'} />
                 <div className="step-body">
-                    <PathContainer />
+                    <PathContainer onCheck={this.handleCheck} isChecked={this.state} />
                 </div>
                 <div className="btn-group">
                     <FlatButton onClick={this.props.prevStepHandler} className="btn-group__prev-btn" label="poprzedni krok" default={true}/>

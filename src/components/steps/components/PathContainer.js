@@ -4,20 +4,14 @@ import React from 'react';
 import CareerPath from './CareerPath';
 
 export default class PathContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            checked: false
-        };
-    }
-
     render() {
+        console.log(this.props);
         return(
             <div>
-                <CareerPath isChecked={this.state} />
-                <CareerPath isChecked={this.state} />
-                <CareerPath isChecked={this.state} />
-                <CareerPath isChecked={this.state} />
+                <CareerPath onCheck={this.props.onCheck} isChecked={this.props.path1} />
+                <CareerPath onCheck={this.props.onCheck} isChecked={this.props.path2} />
+                <CareerPath onCheck={this.props.onCheck} isChecked={this.props.path3} />
+                <CareerPath onCheck={this.props.onCheck} isChecked={this.props.path4} />
                 <span className="careerPath-desc">% osób wybiera tę ścieżkę</span>
             </div>
         );
