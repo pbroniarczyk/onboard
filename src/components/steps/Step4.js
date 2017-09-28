@@ -4,6 +4,7 @@ import React from 'react';
 import { BoardHeader } from '../BoardHeader';
 import { Input } from './components/Input';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import AutoComplete from 'material-ui/AutoComplete';
 
 const skills = [
@@ -90,7 +91,7 @@ export class Step4 extends React.Component {
 
                 </div>
                 <div className="btn-group">
-                    <RaisedButton onClick={this.props.prevStepHandler} className="btn-group__prev-btn" label="poprzedni krok" default={true}/>
+                    <FlatButton onClick={this.props.prevStepHandler} className="btn-group__prev-btn" label="poprzedni krok" default={true}/>
                     <RaisedButton onClick={this.props.nextStepHandler} className="btn-group__next-btn" label="następny krok" primary={true} disabled={this.state.disabled}/>
                 </div>
             </div>

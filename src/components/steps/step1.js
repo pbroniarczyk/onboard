@@ -6,33 +6,31 @@ import { RangeSlider } from './components/RangeSlider';
 import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
+import AutoComplete from 'material-ui/AutoComplete';
 
 
 export class Step1 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false
+            disabled: true
         };
     }
 
     // validate inputs & allow moving to the nest step
     handleChange(event) {
-        let value = event.target.value,
-            inputs = document.querySelectorAll('input[type=text]');
+        const valArray = [];
+        const refs = this.refs;
 
-        inputs.forEach(input => {
-            let inputVal = input.value,
-                validate = false;
-                
-            if (inputVal !== '') {
-                validate = true;
-                this.setState({disabled: false});
-            } else {
-                validate = false;
-                this.setState({disabled: true});
+        for (let key in refs) {
+            if (refs.hasOwnProperty(key)) {
+                let value = refs[key].requestsList[0].text;
+                valArray.push(value);
             }
-        }, this);
+            if (valArray.length === 2) {
+                this.setState({disabled: false});
+            }
+        }
     }
 
     // Hide & display sliders on checking propper checkboxex
@@ -61,8 +59,23 @@ export class Step1 extends React.Component {
                 <BoardHeader title={'Twoje doświadczenie'} subtitle={'Opowiedz, jakie masz doświadczenie i sprawdź swoje możliwości.'} />
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
-                        <input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
-                        <input onChange={this.handleChange.bind(this)} type="text" id="cities" placeholder="Miasto" />
+                        {/*<input onChange={this.handleChange.bind(this)} type="text" id="positions" placeholder="Nazwa stanowiska" />
+                        <input onChange={this.handleChange.bind(this)} type="text" id="cities" placeholder="Miasto" />*/}
+
+                        <AutoComplete
+                            ref="acomp1"
+                            id="positions"
+                            hintText="Nazwa stanowiska"
+                            dataSource={dataSource[0].positions}
+                            onClose={this.handleChange.bind(this)}
+                        />
+                        <AutoComplete
+                            ref="acomp2"
+                            id="cities"
+                            hintText="Miasto"
+                            dataSource={dataSource[1].cities}
+                            onClose={this.handleChange.bind(this)}
+                        />
                     </div>
 
                     <Checkbox className="step-body__checkbox" label="Możliwość relokacji" />
