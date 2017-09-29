@@ -7,9 +7,7 @@ import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-
 import CareerPath from './components/CareerPath';
-// import PathContainer from './components/PathContainer';
 
 
 export class Step3 extends React.Component {
@@ -17,7 +15,7 @@ export class Step3 extends React.Component {
         super();
         this.state = {
             disabled: true,
-            check: [false,false,true,false]
+            check: [false,false,false,false]
         };
     }
 
@@ -30,7 +28,7 @@ export class Step3 extends React.Component {
             <div className="step step3">
                 <BoardHeader title={'Ścieżki kariery'} subtitle={'Wybierz stanowisko, na którym chcesz się znaleźć po zdobyciu większego doświadczenia i umiejętności.'} />
                 <div className="step-body">
-                    {this.state.check.map((e,i) => <CareerPath key={i} onCheck={this.handleCheck} isChecked={e} />)}
+                    {this.state.check.map((e,i) => <CareerPath key={i} ref={e} onCheck={this.handleCheck} isChecked={e} />)}
                     <span className="careerPath-desc">% osób wybiera tę ścieżkę</span>
                 </div>
                 <div className="btn-group">
