@@ -19,20 +19,18 @@ export default class CareerPath extends React.Component {
         });
     }
 
-    checkHandler() {
+    checkHandler(e) {
         this.setState({
             checked: !this.state.checked
         });
-        this.props.onCheck()
     }
 
     render() {
-        console.log(this.props);
         return(
             <div className={classNames('path', { 'path--checked': this.state.checked})} onClick={this.checkHandler.bind(this)}>
                 <span className="path__percentage">38%</span>
                 <span className="path__title">Front-End Developer</span>
-                <Checkbox ref={this.props} className="path__checkbox" checked={this.props.isChecked} />
+                <Checkbox ref={this.props} className="path__checkbox" checked={this.state.checked} />
             </div>
         );
     }
