@@ -16,52 +16,44 @@ export class Step3 extends React.Component {
         super();
         this.state = {
             disabled: true,
-            check: [false,false,false,false],
-            checked: '',
+            check: [false,false,true,false],
+            checked: [
+                {check: false},
+                {check: false},
+                {check: false},
+                {check: false},
+            ],
             class: ''
         };
     }
 
-    handleChange() {
-        console.log(this)
-    }
-
-    // componentWillMount() {
-    //     this.setState({
-    //         checked: this.props.isChecked
-    //     });
-    // }
-
-    componentWillUpdate() {
-        // console.log('UPDATEs');
-    }
-
     handleClick(e) {
-        console.log(this)
-        // this.handleCheck();
-        this.setState({
-            checked: !this.state.e
-        });
-    }
+        const index = e.currentTarget.getAttribute('data-index'),
+              checkArray = this.state.check;
 
-    // handleCheck() {
-    //     console.log(this);
-    // }
+        console.log(index);
+        // e.currentTarget.classList.add('path--checked');
+        this.setState({
+            checked: check[index]
+        });
+        console.log(this.state.checked[index]);
+    }
 
     render() {
         return(
             <div className="step step3">
                 <BoardHeader title={'Ścieżki kariery'} subtitle={'Wybierz stanowisko, na którym chcesz się znaleźć po zdobyciu większego doświadczenia i umiejętności.'} />
                 <div className="step-body">
-                    {this.state.check.map((e,i) => {
+                    {this.state.checked.map((e,i) => {
                         return (
-                            <div className={classNames('path', { 'path--checked': this.state.check[i]})} key={i} onClick={this.handleClick.bind(this)}>
+                            <div className={classNames('path', { 'path--checked': this.state.checked[i].check})} data-index={i} key={i} onClick={this.handleClick.bind(this)}>
                                 <span className="path__percentage">38%</span>
                                 <span className="path__title">Front-End Developer</span>
-                                <Checkbox ref={this.props} ref={i} className="path__checkbox" checked={this.state.e} />
+                                <Checkbox ref={'checkbox'+i} className="path__checkbox" checked={this.state.checked[i].check} />
                             </div>
                         )
                     })}
+                    
                     <span className="careerPath-desc">% osób wybiera tę ścieżkę</span>
                 </div>
                 <div className="btn-group">
