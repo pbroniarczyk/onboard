@@ -19,12 +19,17 @@ export class Step3 extends React.Component {
         };
     }
 
+    onChange() {
+        console.log(this)
+        this.setState({disabled: !this.state.disabled});
+    }
+
     render() {
         return(
             <div className="step step3">
                 <BoardHeader title={'Ścieżki kariery'} subtitle={'Wybierz stanowisko, na którym chcesz się znaleźć po zdobyciu większego doświadczenia i umiejętności.'} />
                 <div className="step-body">
-                    {this.state.check.map((e,i) => <CareerPath key={i} isChecked={e} />)}
+                    {this.state.check.map((e,i) => <CareerPath key={i} onChange={this.onChange.bind(this)} isChecked={e} />)}
                     <span className="careerPath-desc">% osób wybiera tę ścieżkę</span>
                 </div>
                 <div className="btn-group">
