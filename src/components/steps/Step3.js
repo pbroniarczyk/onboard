@@ -16,27 +16,31 @@ export class Step3 extends React.Component {
         super();
         this.state = {
             disabled: true,
-            check: [false,false,true,false],
-            checked: [
-                {check: false},
-                {check: false},
-                {check: false},
-                {check: false},
-            ],
+            checked: [false, false, false, false],
             class: ''
         };
     }
 
     handleClick(e) {
         const index = e.currentTarget.getAttribute('data-index'),
-              checkArray = this.state.check;
+              checkArray = this.state.checked,
+              start_index = index,
+              remove = 1,
+              removed_elements = checkArray.splice(start_index, remove, !checkArray[index]);
 
-        console.log(index);
-        // e.currentTarget.classList.add('path--checked');
         this.setState({
-            checked: check[index]
+            checked: checkArray
         });
-        console.log(this.state.checked[index]);
+
+        for (let i = 0; i < checkArray.length; i++) {
+            let element = checkArray[i];
+            if (element) {
+                return this.setState({disabled: false});
+            } else {
+                this.setState({disabled: true});
+            }
+            
+        }
     }
 
     render() {
@@ -46,10 +50,10 @@ export class Step3 extends React.Component {
                 <div className="step-body">
                     {this.state.checked.map((e,i) => {
                         return (
-                            <div className={classNames('path', { 'path--checked': this.state.checked[i].check})} data-index={i} key={i} onClick={this.handleClick.bind(this)}>
+                            <div className={classNames('path', { 'path--checked': this.state.checked[i]})} data-index={i} key={i} onClick={this.handleClick.bind(this)}>
                                 <span className="path__percentage">38%</span>
                                 <span className="path__title">Front-End Developer</span>
-                                <Checkbox ref={'checkbox'+i} className="path__checkbox" checked={this.state.checked[i].check} />
+                                <Checkbox ref={'checkbox'+i} className="path__checkbox" checked={this.state.checked[i]} />
                             </div>
                         )
                     })}
