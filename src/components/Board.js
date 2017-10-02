@@ -14,7 +14,7 @@ export class Board extends React.Component {
         this.prevStep = this.prevStep.bind(this);
 
         this.state = {
-            step: 3
+            step: 4
         };
     }
 
