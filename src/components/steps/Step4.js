@@ -11,11 +11,17 @@ const skills = [
   'JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL',
 ];
 
+const classHandler = (element, index, innerText) => {
+    element[index].classList.add('skill--full');
+    element[index].classList.remove('skill--empty');
+    element[index].innerText = innerText;
+};
+
 export class Step4 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false
+            disabled: true
         };
     }
 
@@ -24,9 +30,11 @@ export class Step4 extends React.Component {
         const emptySkill = document.querySelectorAll('.skill--empty'),
               skillCounter = document.querySelector('.skill-count');
 
-        emptySkill[0].classList.add('skill--full');
-        emptySkill[0].classList.remove('skill--empty');
-        emptySkill[0].innerText = skill;
+        // emptySkill[0].classList.add('skill--full');
+        // emptySkill[0].classList.remove('skill--empty');
+        // emptySkill[0].innerText = skill;
+
+        classHandler(emptySkill, '[0]', skill);
 
         let fullSkill = document.querySelectorAll('.skill--full');
         skillCounter.innerText = fullSkill.length;
@@ -39,9 +47,11 @@ export class Step4 extends React.Component {
               emptySkill = document.querySelectorAll('.skill--empty'),
               skillCounter = document.querySelector('.skill-count');
 
-        emptySkill[0].classList.add('skill--full');
-        emptySkill[0].classList.remove('skill--empty');
-        emptySkill[0].innerText = skillSelected;
+        // emptySkill[0].classList.add('skill--full');
+        // emptySkill[0].classList.remove('skill--empty');
+        // emptySkill[0].innerText = skillSelected;
+
+        classHandler(emptySkill, '[0]', skillSelected);
 
         let fullSkill = document.querySelectorAll('.skill--full');
         skillCounter.innerText = fullSkill.length;
@@ -50,6 +60,26 @@ export class Step4 extends React.Component {
 
         if (fullSkill.length === 6) this.setState({disabled: false});
     }
+
+    removeSkill(event) {
+        const skillFull = event.currentTarget,
+              skillCounter = document.querySelector('.skill-count');
+        // skillFull.innerText = '';
+        // skillFull.classList.remove('skill--full');
+        // skillFull.classList.add('skill--empty');
+
+        classHandler(skillFull, '', '');
+
+        let fullSkill = document.querySelectorAll('.skill--full');
+        skillCounter.innerText = fullSkill.length;
+
+        if (skillFull.length !== 6) this.setState({disabled: true});
+    }
+
+    componentWillUpdate() {
+        console.log('UPDATE');
+    }
+
 
     render() {
         return(
@@ -81,12 +111,12 @@ export class Step4 extends React.Component {
                         <p><span className="skill-count">0</span>/6</p>
                     </div>
                     <div className="skill-wrapper">
-                        <span className="skill skill--empty"></span>
-                        <span className="skill skill--empty"></span>
-                        <span className="skill skill--empty"></span>
-                        <span className="skill skill--empty"></span>
-                        <span className="skill skill--empty"></span>
-                        <span className="skill skill--empty"></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
                     </div>
 
                 </div>
