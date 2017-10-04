@@ -11,10 +11,15 @@ const skills = [
   'JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL',
 ];
 
-const classHandler = (element, index, innerText) => {
-    element[index].classList.add('skill--full');
-    element[index].classList.remove('skill--empty');
-    element[index].innerText = innerText;
+const classHandler = (element, innerText) => {
+    if(element.classList.contains('skill--full')) {
+        element.classList.remove('skill--full');
+        element.classList.add('skill--empty');
+    } else {
+        element.classList.add('skill--full');
+        element.classList.remove('skill--empty'); 
+    }
+    element.innerText = innerText;
 };
 
 export class Step4 extends React.Component {
@@ -26,60 +31,37 @@ export class Step4 extends React.Component {
     }
 
     inputSelectHandler() {
-        let skill = document.getElementById('skills').value;
-        const emptySkill = document.querySelectorAll('.skill--empty'),
-              skillCounter = document.querySelector('.skill-count');
+        let skill = document.getElementById('skills').value,
+            fullSkill = document.querySelectorAll('.skill--full'),
+            emptySkill = document.querySelectorAll('.skill--empty'),
+            skillCounter = document.querySelector('.skill-count');
 
-        // emptySkill[0].classList.add('skill--full');
-        // emptySkill[0].classList.remove('skill--empty');
-        // emptySkill[0].innerText = skill;
-
-        classHandler(emptySkill, '[0]', skill);
-
-        let fullSkill = document.querySelectorAll('.skill--full');
-        skillCounter.innerText = fullSkill.length;
-
+        classHandler(emptySkill[0], skill);
+        skillCounter.innerText = fullSkill.length + 1;
         if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
     selectSkill(event) {
-        const skillSelected = event.currentTarget.innerText,
-              emptySkill = document.querySelectorAll('.skill--empty'),
-              skillCounter = document.querySelector('.skill-count');
+        let skillSelected = event.currentTarget.innerText,
+            emptySkill = document.querySelectorAll('.skill--empty'),
+            skillCounter = document.querySelector('.skill-count'),
+            fullSkill = document.querySelectorAll('.skill--full');
 
-        // emptySkill[0].classList.add('skill--full');
-        // emptySkill[0].classList.remove('skill--empty');
-        // emptySkill[0].innerText = skillSelected;
-
-        classHandler(emptySkill, '[0]', skillSelected);
-
-        let fullSkill = document.querySelectorAll('.skill--full');
-        skillCounter.innerText = fullSkill.length;
-
+        classHandler(emptySkill[0], skillSelected);
+        skillCounter.innerText = fullSkill.length + 1;
         event.currentTarget.remove();
-
         if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
     removeSkill(event) {
-        const skillFull = event.currentTarget,
-              skillCounter = document.querySelector('.skill-count');
-        // skillFull.innerText = '';
-        // skillFull.classList.remove('skill--full');
-        // skillFull.classList.add('skill--empty');
+        let skillFull = event.currentTarget,
+            fullSkill = document.querySelectorAll('.skill--full'),
+            skillCounter = document.querySelector('.skill-count');
 
-        classHandler(skillFull, '', '');
-
-        let fullSkill = document.querySelectorAll('.skill--full');
-        skillCounter.innerText = fullSkill.length;
-
+        classHandler(skillFull, '');
+        skillCounter.innerText = fullSkill.length - 1;
         if (skillFull.length !== 6) this.setState({disabled: true});
     }
-
-    componentWillUpdate() {
-        console.log('UPDATE');
-    }
-
 
     render() {
         return(
