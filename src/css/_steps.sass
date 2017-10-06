@@ -138,6 +138,7 @@
     flex-wrap: wrap
     margin-bottom: 30px
     min-height: 65px
+    position: relative
 
     +elm('item')
         font-size: 12px
@@ -151,6 +152,17 @@
             bottom: 6px
         &:hover
             cursor: pointer
+
+    +mod(disabled)
+        &::after
+            content: ''
+            position: absolute
+            display: block
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            background-color: rgba(255, 255, 255, 0.7)
 
 .skill-counter
     display: flex

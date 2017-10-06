@@ -27,25 +27,38 @@ export class Step4 extends React.Component {
         super();
         this.state = {
             disabled: true,
+            inputDisabled: false,
             skillCounter: 0
         };
     }
 
     checkDisabled() {
-        if (this.state.skillCounter >= 6) {
-            this.setState({disabled: false});
-        } else {
-            this.setState({disabled: true});
+        const skillCover = document.querySelector('.skill-cloud');
+        if (this.state.skillCounter === 6 && !skillCover.classList.contains('skill-cloud--disabled')) {
+            this.setState({
+                disabled: false,
+                inputDisabled: true
+            });
+            skillCover.classList.add('skill-cloud--disabled');
+        } else if (this.state.skillCounter !== 6 || skillCover.classList.contains('skill-cloud--disabled')) {
+            this.setState({
+                disabled: true,
+                inputDisabled: false
+            });
+            skillCover.classList.remove('skill-cloud--disabled');
         }
     }
 
     inputSelectHandler() {
         let skill = document.getElementById('skills').value,
-            fullSkill = document.querySelectorAll('.skill--full'),
-            emptySkill = document.querySelectorAll('.skill--empty'),
-            skillCounter = document.querySelector('.skill-count');
+            emptySkill = document.querySelectorAll('.skill--empty');
 
+        this.setState(
+            {skillCounter: this.state.skillCounter + 1,},
+            () => this.checkDisabled()
+        );
         classHandler(emptySkill[0], skill);
+        
     }
 
     selectSkill(event) {
@@ -55,10 +68,7 @@ export class Step4 extends React.Component {
         );
 
         let skillSelected = event.currentTarget.innerText,
-            emptySkill = document.querySelectorAll('.skill--empty'),
-            skillCounter = document.querySelector('.skill-count'),
-            fullSkill = document.querySelectorAll('.skill--full');
-
+            emptySkill = document.querySelectorAll('.skill--empty');
         classHandler(emptySkill[0], skillSelected);
         event.currentTarget.remove();
     }
@@ -69,10 +79,7 @@ export class Step4 extends React.Component {
             () => this.checkDisabled()
         );
 
-        let skillFull = event.currentTarget,
-            fullSkill = document.querySelectorAll('.skill--full'),
-            skillCounter = document.querySelector('.skill-count');
-
+        let skillFull = event.currentTarget;
         classHandler(skillFull, '');
     }
 
@@ -87,8 +94,9 @@ export class Step4 extends React.Component {
                             floatingLabelText="Nazwa umiejętności"
                             filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={skills}
-                            onClose={this.inputSelectHandler}
+                            onClose={this.inputSelectHandler.bind(this)}
                             menuCloseDelay={0}
+                            disabled={this.state.inputDisabled}
                         />
                     </div>
 
