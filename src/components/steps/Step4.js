@@ -26,7 +26,7 @@ export class Step4 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: true,
+            disabled: false,
             inputDisabled: false,
             skillCounter: 0
         };

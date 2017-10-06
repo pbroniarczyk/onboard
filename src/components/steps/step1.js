@@ -13,7 +13,7 @@ export class Step1 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: true
+            disabled: false
         };
     }
 
@@ -25,6 +25,7 @@ export class Step1 extends React.Component {
         for (let key in refs) {
             if (refs.hasOwnProperty(key)) {
                 let value = refs[key].requestsList[0].text;
+                console.log(value)
                 valArray.push(value);
             }
             if (valArray.length === 2) {

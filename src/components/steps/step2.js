@@ -12,29 +12,28 @@ export class Step2 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: true,
+            disabled: false,
             value: '',
             error: ''
         };
     }
 
     handleChange(event) {
-        console.log(this.state.value);
-        this.setState({
-            value: event.target.value
-        });
-
-        if (this.state.value < 1000 || this.state.value > 99999) {
-            this.setState({
-                error: 'Wprowadź poprawną kwotę',
-                disabled: true
-            });
-        } else {
-            this.setState({
-                error: '',
-                disabled: false
-            });
-        }
+        this.setState(
+            {value: event.target.value}, () => {
+            if (this.state.value < 1000 || this.state.value > 99999) {
+                this.setState({
+                    error: 'Wprowadź poprawną kwotę',
+                    disabled: true
+                });
+            } else {
+                this.setState({
+                    error: '',
+                    disabled: false
+                });
+            }
+            }
+        );
     }
 
     render() {
