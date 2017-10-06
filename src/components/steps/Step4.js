@@ -26,8 +26,17 @@ export class Step4 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: true
+            disabled: true,
+            skillCounter: 0
         };
+    }
+
+    checkDisabled() {
+        if (this.state.skillCounter >= 6) {
+            this.setState({disabled: false});
+        } else {
+            this.setState({disabled: true});
+        }
     }
 
     inputSelectHandler() {
@@ -37,30 +46,34 @@ export class Step4 extends React.Component {
             skillCounter = document.querySelector('.skill-count');
 
         classHandler(emptySkill[0], skill);
-        skillCounter.innerText = fullSkill.length + 1;
-        if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
     selectSkill(event) {
+        this.setState(
+            {skillCounter: this.state.skillCounter + 1},
+            () => this.checkDisabled()
+        );
+
         let skillSelected = event.currentTarget.innerText,
             emptySkill = document.querySelectorAll('.skill--empty'),
             skillCounter = document.querySelector('.skill-count'),
             fullSkill = document.querySelectorAll('.skill--full');
 
         classHandler(emptySkill[0], skillSelected);
-        skillCounter.innerText = fullSkill.length + 1;
         event.currentTarget.remove();
-        if (fullSkill.length === 6) this.setState({disabled: false});
     }
 
     removeSkill(event) {
+        this.setState(
+            {skillCounter: this.state.skillCounter - 1},
+            () => this.checkDisabled()
+        );
+
         let skillFull = event.currentTarget,
             fullSkill = document.querySelectorAll('.skill--full'),
             skillCounter = document.querySelector('.skill-count');
 
         classHandler(skillFull, '');
-        skillCounter.innerText = fullSkill.length - 1;
-        if (skillFull.length !== 6) this.setState({disabled: true});
     }
 
     render() {
@@ -86,11 +99,17 @@ export class Step4 extends React.Component {
                         <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>CSS3</span>
                         <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>React</span>
                         <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Sass</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>JavaScript</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Python</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>HTML</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>CSS3</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>React</span>
+                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Sass</span>
                     </div>
 
                     <div className="skill-counter">
                         <p>Twoje umiejętności</p>
-                        <p><span className="skill-count">0</span>/6</p>
+                        <p><span className="skill-count">{this.state.skillCounter}</span>/6</p>
                     </div>
                     <div className="skill-wrapper">
                         <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
