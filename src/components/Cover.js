@@ -26,7 +26,7 @@ export class Cover extends React.Component {
             case 2:
                 return(
                     <section id="cover">
-                        <Cover3 />
+                        <Cover3 user={this.props.user} />
                     </section>
                 );
                 break;
@@ -34,7 +34,7 @@ export class Cover extends React.Component {
             case 3:
                 return(
                     <section id="cover">
-                        <Cover3 />
+                        <Cover3 user={this.props.user} />
                     </section>
                 );
                 break;

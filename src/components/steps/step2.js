@@ -36,7 +36,20 @@ export class Step2 extends React.Component {
         );
     }
 
+    componentWillUnmount() {
+        const user = {
+            position: this.props.user.position,
+            city: this.props.user.city,
+            salary: ''
+        };
+        let salary = this.state.value + 'zł';
+        user.salary = salary;
+        this.props.userUpdate(user);
+        console.log(user);
+    }
+
     render() {
+        console.log('USER: ', this.props);
         return(
             <div className="step step2">
                 <BoardHeader title={'Warunki współpracy'} subtitle={'Zdecyduj, ile chcesz zarabiasz i określ warunki swojego zatrudnienia.'} />

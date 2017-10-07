@@ -20,6 +20,7 @@ export class Board extends React.Component {
                 mail: '',
                 position: '',
                 city: '',
+                relocate: '',
                 salary: '',
                 experience: {
                     total: '',
@@ -58,11 +59,12 @@ export class Board extends React.Component {
         this.setState(() => {
             this.state.user.position = user.position;
             this.state.user.city = user.city;
-        })
+            this.state.user.salary = user.salary ;
+        });
+    }
 
-        // this.setState({user});
-        console.log(this.state.user);
-        console.log(user);
+    componentWillUpdate() {
+        console.log("update board: ", this.state.user);
     }
 
     render() {
@@ -72,7 +74,7 @@ export class Board extends React.Component {
                     <div className="board">
                         <Cover user={this.state.user} step={this.state.step} prevStep={this.prevStep}/>
                         <Rocket appState={this.state.step} />
-                        <Steps userUpdate={this.updateUser} nextStep={this.nextStep} prevStep={this.prevStep} step={this.state.step} />
+                        <Steps user={this.state.user} userUpdate={this.updateUser} nextStep={this.nextStep} prevStep={this.prevStep} step={this.state.step} />
                     </div>
                 </section>
             )

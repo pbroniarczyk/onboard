@@ -45,28 +45,21 @@ export class Step1 extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     const user = {
-    //         position: '',
-    //         city: ''
-    //     };
-    //     let position = this.refs.acomp1.requestsList[0].text,
-    //         city = this.refs.acomp2.requestsList[0].text;
-    //     user.position = position;
-    //     user.city = city;
-
-    //     console.log(user);
-    // }
-
     componentWillUnmount() {
         const user = {
             position: '',
-            city: ''
+            city: '',
+            relocate: ''
         };
         let position = this.refs.acomp1.requestsList[0].text,
-            city = this.refs.acomp2.requestsList[0].text;
+            city = this.refs.acomp2.requestsList[0].text,
+            relocate = false,
+            relocateCheckbox = document.getElementById('relocate');
+        if (relocateCheckbox.checked) relocate = true;
         user.position = position;
         user.city = city;
+        user.relocate = relocate;
+
         this.props.userUpdate(user);
     }
 
@@ -97,7 +90,7 @@ export class Step1 extends React.Component {
                         />
                     </div>
 
-                    <Checkbox className="step-body__checkbox" label="Możliwość relokacji" />
+                    <Checkbox id="relocate" className="step-body__checkbox" label="Możliwość relokacji" />
 
                     <div>
                         <p className="step-body__text">Lata doświadczenie w zawodzie</p>

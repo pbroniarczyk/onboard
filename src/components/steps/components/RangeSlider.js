@@ -10,9 +10,9 @@ export class RangeSlider extends Component {
         };
     }
 
-    handleChange = (event, value) => {
+    handleChange(event, value) {
         this.setState({rangeValue: value});
-    };
+    }
 
     render() {
         return (
@@ -23,9 +23,9 @@ export class RangeSlider extends Component {
                     max={20}
                     step={1}
                     value={this.state.rangeValue}
-                    onChange={this.handleChange}
+                    onChange={this.handleChange.bind(this)}
                 />
-                <span className="slider-wrapper__bubbel" >{this.state.rangeValue}</span>
+                <span className="slider-wrapper__bubble" >{this.state.rangeValue}</span>
             </div>
         );
     }

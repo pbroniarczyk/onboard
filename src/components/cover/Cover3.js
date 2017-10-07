@@ -11,8 +11,8 @@ export class Cover3 extends React.Component {
                     <BoardHeader title={'Podsumowanie'} subtitle={'Twoje doświadczenie i oczekiwania.'} />
                     <section className="cover-body">
                         <div className="section">
-                            <h1 className="section__title">React Developer</h1>
-                            <p className="section__subtitle">Warszawa</p>
+                            <h1 className="section__title">{this.props.user.position}</h1>
+                            <p className="section__subtitle">{this.props.user.city}</p>
                             <p className="section__subtitle">1-2 lata doświadczenia</p>
                         </div>
                         <div className="section">
@@ -20,8 +20,8 @@ export class Cover3 extends React.Component {
                             <p className="section__subtitle">Rekomendowany przedział zarobków</p>
                         </div>
                         <div className="section">
-                            <h1 className="section__title">7800zł</h1>
-                            <p className="section__subtitle">To Twoja Minimalne oczekiwania finansowe</p>
+                            <h1 className="section__title">{this.props.user.salary}</h1>
+                            <p className="section__subtitle">Twoje minimalne oczekiwania finansowe</p>
                         </div>
                     </section>
                 </div>
