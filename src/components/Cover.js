@@ -19,7 +19,7 @@ export class Cover extends React.Component {
             case 1:
                 return(
                     <section id="cover">
-                        <Cover2 />
+                        <Cover2 user={this.props.user} />
                     </section>
                 );
                 break;

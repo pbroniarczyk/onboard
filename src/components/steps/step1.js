@@ -17,7 +17,6 @@ export class Step1 extends React.Component {
         };
     }
 
-    // validate inputs & allow moving to the nest step
     handleChange(event) {
         const valArray = [];
         const refs = this.refs;
@@ -25,7 +24,6 @@ export class Step1 extends React.Component {
         for (let key in refs) {
             if (refs.hasOwnProperty(key)) {
                 let value = refs[key].requestsList[0].text;
-                console.log(value)
                 valArray.push(value);
             }
             if (valArray.length === 2) {
@@ -34,19 +32,42 @@ export class Step1 extends React.Component {
         }
     }
 
-    // Hide & display sliders on checking propper checkboxex
     handleCheck(event, isInputChecked) {
         const hiddenNode = event.target.parentNode.previousSibling;
         let sliderVal = event.target.parentNode.previousSibling.childNodes[0].childNodes[1].value;
 
         if (isInputChecked) {
-            // When is checked set value of this slider to 0. When is unchecked set back value provided by user
             hiddenNode.classList.add('slider-wrapper--hidden');
             sliderVal = 0; 
             
         } else {
             hiddenNode.classList.remove('slider-wrapper--hidden');
         }
+    }
+
+    // componentDidMount() {
+    //     const user = {
+    //         position: '',
+    //         city: ''
+    //     };
+    //     let position = this.refs.acomp1.requestsList[0].text,
+    //         city = this.refs.acomp2.requestsList[0].text;
+    //     user.position = position;
+    //     user.city = city;
+
+    //     console.log(user);
+    // }
+
+    componentWillUnmount() {
+        const user = {
+            position: '',
+            city: ''
+        };
+        let position = this.refs.acomp1.requestsList[0].text,
+            city = this.refs.acomp2.requestsList[0].text;
+        user.position = position;
+        user.city = city;
+        this.props.userUpdate(user);
     }
 
     render() {

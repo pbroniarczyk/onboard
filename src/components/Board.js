@@ -12,9 +12,34 @@ export class Board extends React.Component {
         super(props);
         this.nextStep = this.nextStep.bind(this);
         this.prevStep = this.prevStep.bind(this);
+        this.updateUser = this.updateUser.bind(this);
 
         this.state = {
-            step: 0
+            step: 0,
+            user: {
+                mail: '',
+                position: '',
+                city: '',
+                salary: '',
+                experience: {
+                    total: '',
+                    last: ''
+                },
+                work: {
+                    type: {
+                        contract: false,
+                        B2B: false,
+                        fullTime: false,
+                    },
+                    place: {
+                        stacionary: false,
+                        remote: false
+                    },
+                },
+                paths: [],
+                skills: [],
+
+            }
         };
     }
 
@@ -29,14 +54,25 @@ export class Board extends React.Component {
         });
     }
 
+    updateUser(user) {
+        this.setState(() => {
+            this.state.user.position = user.position;
+            this.state.user.city = user.city;
+        })
+
+        // this.setState({user});
+        console.log(this.state.user);
+        console.log(user);
+    }
+
     render() {
         if(this.state.step !== 5) {
             return(
                 <section className="board-section">
                     <div className="board">
-                        <Cover step={this.state.step} prevStep={this.prevStep}/>
+                        <Cover user={this.state.user} step={this.state.step} prevStep={this.prevStep}/>
                         <Rocket appState={this.state.step} />
-                        <Steps nextStep={this.nextStep} prevStep={this.prevStep} step={this.state.step} />
+                        <Steps userUpdate={this.updateUser} nextStep={this.nextStep} prevStep={this.prevStep} step={this.state.step} />
                     </div>
                 </section>
             )

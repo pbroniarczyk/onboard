@@ -20,7 +20,7 @@ export class Steps extends React.Component {
             case 0:
                 return(
                     <section id="steps-wrapper">
-                        <Step1 nextStepHandler={this.props.nextStep} />
+                        <Step1 userUpdate={this.props.userUpdate} nextStepHandler={this.props.nextStep} />
                     </section>
                 )
                 break;

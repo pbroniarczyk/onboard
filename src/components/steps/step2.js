@@ -51,7 +51,6 @@ export class Step2 extends React.Component {
                             step="100"
                             errorText={this.state.error}
                         />
-                        {/*<input onChange={this.handleChange.bind(this)} value={this.state.value} type="number" name="minSalary" placeholder="Minimalne oczekiwania finansowe (netto)" step="100" />*/}
                     </div>
 
                     <section className="section-wrapper">
