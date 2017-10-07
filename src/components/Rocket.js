@@ -9,22 +9,32 @@ export class Rocket extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            stage: this.props.appState
+            stage: this.props.appState,
+            currentTrack: 0
         };
     }
 
     componentDidUpdate() {
-        let rocketPath = document.getElementsByClassName('track-container__track'),
-            rocket = document.getElementById('rocket');
-        console.log(this.refs)
-        for (let index = 0; index < rocketPath.length; index++) {
-            let track = rocketPath[index];
-            // let i = rocketPath.find(track);
-            
-            // console.log(i)
-                track.classList.add('track-container__track--completed');
-            if(index > this.props.appState) track.classList.remove('track-container__track--completed');
-        }
+        const rocket = document.getElementById('rocket');
+        const pathArray = [];
+        let pathTrack = document.querySelectorAll('.track-container__track--empty');
+
+        pathTrack.forEach(function(element) {
+            pathArray.push(element);
+        }, this);
+
+        // console.log(pathArray);
+        // console.log(this.props.appState);
+
+        let emptyTrack = pathArray.reverse().slice(this.props.appState);
+        emptyTrack.forEach(function(element) {
+            // console.log(element);
+            element.classList.add('track-container__track--completed');
+        }, this);
+
+        // let completedTrack = pathArray.reverse().shift();
+        // completedTrack.classList.add('track-container__track--completed');
+        // completedTrack.classList.remove('track-container__track--empty');
 
         rocket.style = `transform: translateY(-${113 * this.props.appState}px)`;
     }
@@ -33,10 +43,10 @@ export class Rocket extends React.Component {
         return(
             <div className="rocket-container">
                 <div className="track-container">
-                    <span ref="item1" className="track-container__track"></span>
-                    <span ref="item2" className="track-container__track"></span>
-                    <span ref="item3" className="track-container__track"></span>
-                    <span ref="item4" className="track-container__track"></span>
+                    <span className="track-container__track track-container__track--empty"></span>
+                    <span className="track-container__track track-container__track--empty"></span>
+                    <span className="track-container__track track-container__track--empty"></span>
+                    <span className="track-container__track track-container__track--empty"></span>
                 </div>
                 <span id="rocket" className="rocket">
                     <img className="rocket-container__rocket" src={rocket} alt="rocket" />
