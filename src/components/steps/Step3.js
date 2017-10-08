@@ -3,16 +3,18 @@ import classNames from 'classnames';
 
 // Components
 import { BoardHeader } from '../BoardHeader';
-import { RangeSlider } from './components/RangeSlider';
-import { Input } from './components/Input';
+// import { RangeSlider } from './components/RangeSlider';
+// import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+
+
 export class Step3 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false,
+            disabled: true,
             checked: [false, false, false, false],
             class: ''
         };
@@ -38,6 +40,39 @@ export class Step3 extends React.Component {
             }
             
         }
+    }
+
+    componentWillUnmount() {
+        const user = {
+            position: this.props.user.position,
+            city: this.props.user.city,
+            relocate: this.props.user.relocate,
+            experience: {
+                total: this.props.user.experience.total,
+                last: this.props.user.experience.last,
+            },
+            salary: this.props.user.salary,
+            work: {
+                types: {
+                    employment: this.props.user.work.types.employment,
+                    contractWork: this.props.user.work.types.contractWork,
+                    contractComission: this.props.user.work.types.contractComission,
+                    b2b: this.props.user.work.types.b2b,
+                },
+                place: {
+                    stationary: this.props.user.work.place.stationary,
+                    remote: this.props.user.work.place.remote,
+                }
+            },
+            paths: []
+        };
+        
+        const pathsArray = document.querySelectorAll('.path--checked .path__title');
+        pathsArray.forEach(function(path) {
+            user.paths.push(path.innerText);
+        }, this);
+
+        this.props.userUpdate(user);
     }
 
     render() {

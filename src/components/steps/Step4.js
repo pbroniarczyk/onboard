@@ -2,14 +2,12 @@ import React from 'react';
 
 // Components
 import { BoardHeader } from '../BoardHeader';
-import { Input } from './components/Input';
+// import { Input } from './components/Input';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import AutoComplete from 'material-ui/AutoComplete';
 
-const skills = [
-  'JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL',
-];
+const skills = ['JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL',];
 
 const classHandler = (element, innerText) => {
     if(element.classList.contains('skill--full')) {
@@ -26,7 +24,7 @@ export class Step4 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false,
+            disabled: true,
             inputDisabled: false,
             skillCounter: 0
         };
@@ -81,6 +79,40 @@ export class Step4 extends React.Component {
 
         let skillFull = event.currentTarget;
         classHandler(skillFull, '');
+    }
+
+    componentWillUnmount() {
+        const user = {
+            position: this.props.user.position,
+            city: this.props.user.city,
+            relocate: this.props.user.relocate,
+            experience: {
+                total: this.props.user.experience.total,
+                last: this.props.user.experience.last,
+            },
+            salary: this.props.user.salary,
+            work: {
+                types: {
+                    employment: this.props.user.work.types.employment,
+                    contractWork: this.props.user.work.types.contractWork,
+                    contractComission: this.props.user.work.types.contractComission,
+                    b2b: this.props.user.work.types.b2b,
+                },
+                place: {
+                    stationary: this.props.user.work.place.stationary,
+                    remote: this.props.user.work.place.remote,
+                }
+            },
+            paths: this.props.user.paths,
+            skills: []
+        };
+        
+        const skillsArray = document.querySelectorAll('.skill--full');
+        skillsArray.forEach(function(skill) {
+            user.skills.push(skill.innerText);
+        }, this);
+
+        this.props.userUpdate(user);
     }
 
     render() {

@@ -2,10 +2,11 @@ import React from 'react';
 
 // Components
 import { BoardHeader } from '../BoardHeader';
-import { RangeSlider } from './components/RangeSlider';
-import { Input } from './components/Input';
+// import { RangeSlider } from './components/RangeSlider';
+// import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
+import Slider from 'material-ui/Slider';
 import AutoComplete from 'material-ui/AutoComplete';
 
 
@@ -13,7 +14,9 @@ export class Step1 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false
+            disabled: true,
+            rangeValue1: 0,
+            rangeValue2: 0,
         };
     }
 
@@ -32,6 +35,13 @@ export class Step1 extends React.Component {
         }
     }
 
+    handleSlider1Change(event, value) {
+        this.setState({rangeValue1: value});
+    }
+    handleSlider2Change(event, value) {
+        this.setState({rangeValue2: value});
+    }
+
     handleCheck(event, isInputChecked) {
         const hiddenNode = event.target.parentNode.previousSibling;
         let sliderVal = event.target.parentNode.previousSibling.childNodes[0].childNodes[1].value;
@@ -46,20 +56,21 @@ export class Step1 extends React.Component {
     }
 
     componentWillUnmount() {
+        console.log(this.refs)
         const user = {
             position: '',
             city: '',
-            relocate: ''
+            relocate: this.refs.relocate.state.switched,
+            experience: {
+                total: this.refs.expTotal.state.value,
+                last: this.refs.expLast.state.value,
+            }
         };
         let position = this.refs.acomp1.requestsList[0].text,
-            city = this.refs.acomp2.requestsList[0].text,
-            relocate = false,
-            relocateCheckbox = document.getElementById('relocate');
-        if (relocateCheckbox.checked) relocate = true;
+            city = this.refs.acomp2.requestsList[0].text;
+
         user.position = position;
         user.city = city;
-        user.relocate = relocate;
-
         this.props.userUpdate(user);
     }
 
@@ -90,16 +101,38 @@ export class Step1 extends React.Component {
                         />
                     </div>
 
-                    <Checkbox id="relocate" className="step-body__checkbox" label="Możliwość relokacji" />
+                    <Checkbox ref="relocate" className="step-body__checkbox" label="Możliwość relokacji" />
 
                     <div>
                         <p className="step-body__text">Lata doświadczenie w zawodzie</p>
-                        <RangeSlider />
+                        <div className="slider-wrapper">
+                            <Slider
+                                className="slider-wrapper__slider"
+                                min={0}
+                                max={5}
+                                step={1}
+                                value={this.state.rangeValue1}
+                                onChange={this.handleSlider1Change.bind(this)}
+                                ref="expTotal"
+                            />
+                            <span className="slider-wrapper__bubble" >{this.state.rangeValue1 + ' lat'}</span>
+                        </div>
                         <Checkbox className="step-body__checkbox" label="Nie mam doświdczenia" onCheck={this.handleCheck.bind(this)} />
                     </div>
                     <div>
                         <p className="step-body__text">Staż w obecnym miejscu pracy</p>
-                        <RangeSlider />
+                        <div className="slider-wrapper">
+                            <Slider
+                                className="slider-wrapper__slider"
+                                min={0}
+                                max={5}
+                                step={1}
+                                value={this.state.rangeValue2}
+                                onChange={this.handleSlider2Change.bind(this)}
+                                ref="expLast"
+                            />
+                            <span className="slider-wrapper__bubble" >{this.state.rangeValue2 + ' lat'}</span>
+                        </div>
                         <Checkbox className="step-body__checkbox" label="Nie pracuję" onCheck={this.handleCheck.bind(this)} />
                     </div>
                 </div>

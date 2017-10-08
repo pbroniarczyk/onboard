@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import { BoardHeader } from '../BoardHeader';
-import { Input } from './components/Input';
+// import { Input } from './components/Input';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
@@ -12,7 +12,7 @@ export class Step2 extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: false,
+            disabled: true,
             value: '',
             error: ''
         };
@@ -37,15 +37,32 @@ export class Step2 extends React.Component {
     }
 
     componentWillUnmount() {
+        console.log(this.props)
         const user = {
             position: this.props.user.position,
             city: this.props.user.city,
-            salary: ''
+            relocate: this.props.user.relocate,
+            experience: {
+                total: this.props.user.experience.total,
+                last: this.props.user.experience.last,
+            },
+            salary: '',
+            work: {
+                types: {
+                    employment: this.refs.employment.state.switched,
+                    contractWork: this.refs.contractWork.state.switched,
+                    contractComission: this.refs.contractComission.state.switched,
+                    b2b: this.refs.b2b.state.switched,
+                },
+                place: {
+                    stationary: this.refs.stationary.state.switched,
+                    remote: this.refs.remote.state.switched,
+                }
+            },
         };
         let salary = this.state.value + 'zł';
         user.salary = salary;
         this.props.userUpdate(user);
-        console.log(user);
     }
 
     render() {
@@ -69,18 +86,18 @@ export class Step2 extends React.Component {
                     <section className="section-wrapper">
                         <p className="section-wrapper__title">Forma zatrudnienia</p>
                         <div className="contract-types">
-                            <Checkbox className="contract-types__checkbox" label="Umowa o pracę" />
-                            <Checkbox className="contract-types__checkbox" label="Umowa o dzieło" />
-                            <Checkbox className="contract-types__checkbox" label="Umowa zlecenia" />
-                            <Checkbox className="contract-types__checkbox" label="Umowa B2B" />
+                            <Checkbox className="contract-types__checkbox" ref="employment" label="Umowa o pracę" />
+                            <Checkbox className="contract-types__checkbox" ref="contractWork" label="Umowa o dzieło" />
+                            <Checkbox className="contract-types__checkbox" ref="contractComission" label="Umowa zlecenia" />
+                            <Checkbox className="contract-types__checkbox" ref="b2b" label="Umowa B2B" />
                         </div>
                     </section>
 
                     <section className="section-wrapper">
                         <p className="section-wrapper__title">Miejsce pracy</p>
                         <div className="job-location">
-                            <Checkbox className="job-location__checkbox" label="Stacjonarnie" />
-                            <Checkbox className="job-location__checkbox" label="Zdalnie" />
+                            <Checkbox className="job-location__checkbox" ref="stationary" label="Stacjonarnie" />
+                            <Checkbox className="job-location__checkbox" ref="remote" label="Zdalnie" />
                         </div>
                     </section>
                 </div>

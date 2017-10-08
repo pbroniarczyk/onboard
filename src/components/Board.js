@@ -28,9 +28,10 @@ export class Board extends React.Component {
                 },
                 work: {
                     type: {
-                        contract: false,
-                        B2B: false,
-                        fullTime: false,
+                        employment: false,
+                        contractWork: false,
+                        contractComission: false,
+                        b2b: false,
                     },
                     place: {
                         stacionary: false,
@@ -59,7 +60,13 @@ export class Board extends React.Component {
         this.setState(() => {
             this.state.user.position = user.position;
             this.state.user.city = user.city;
-            this.state.user.salary = user.salary ;
+            this.state.user.mail = user.mail;
+            this.state.user.relocate = user.relocate;
+            this.state.user.experience = user.experience;
+            this.state.user.salary = user.salary;
+            this.state.user.work = user.work;
+            this.state.user.paths = user.paths;
+            this.state.user.skills = user.skills;
         });
     }
 
@@ -82,7 +89,7 @@ export class Board extends React.Component {
             return(
                 <section className="board-section">
                     <div className="board">
-                        <Confirmed />
+                        <Confirmed user={this.state.user} />
                     </div>
                 </section>
             )
