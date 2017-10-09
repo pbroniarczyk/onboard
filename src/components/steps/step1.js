@@ -18,6 +18,15 @@ export class Step1 extends React.Component {
             rangeValue1: 0,
             rangeValue2: 0,
         };
+
+        this.slider = new Map([
+            [0, '< 1 roku'],
+            [1, '1 rok'],
+            [2, '2 lata'],
+            [3, '3 lata'],
+            [4, '4 lata'],
+            [5, '> 5 lat']
+        ]);
     }
 
     handleChange(event) {
@@ -36,10 +45,11 @@ export class Step1 extends React.Component {
     }
 
     handleSlider1Change(event, value) {
-        this.setState({rangeValue1: value});
+        console.log(this)
+        this.setState({rangeValue1: this.slider.get(value)});
     }
     handleSlider2Change(event, value) {
-        this.setState({rangeValue2: value});
+        this.setState({rangeValue2: this.slider.get(value)});
     }
 
     handleCheck(event, isInputChecked) {
@@ -56,7 +66,6 @@ export class Step1 extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log(this.refs)
         const user = {
             position: '',
             city: '',
@@ -111,11 +120,10 @@ export class Step1 extends React.Component {
                                 min={0}
                                 max={5}
                                 step={1}
-                                value={this.state.rangeValue1}
                                 onChange={this.handleSlider1Change.bind(this)}
                                 ref="expTotal"
                             />
-                            <span className="slider-wrapper__bubble" >{this.state.rangeValue1 + ' lat'}</span>
+                            <span className="slider-wrapper__bubble" >{this.state.rangeValue1}</span>
                         </div>
                         <Checkbox className="step-body__checkbox" label="Nie mam doświdczenia" onCheck={this.handleCheck.bind(this)} />
                     </div>
@@ -127,11 +135,10 @@ export class Step1 extends React.Component {
                                 min={0}
                                 max={5}
                                 step={1}
-                                value={this.state.rangeValue2}
                                 onChange={this.handleSlider2Change.bind(this)}
                                 ref="expLast"
                             />
-                            <span className="slider-wrapper__bubble" >{this.state.rangeValue2 + ' lat'}</span>
+                            <span className="slider-wrapper__bubble" >{this.state.rangeValue2}</span>
                         </div>
                         <Checkbox className="step-body__checkbox" label="Nie pracuję" onCheck={this.handleCheck.bind(this)} />
                     </div>
