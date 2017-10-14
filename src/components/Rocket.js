@@ -23,18 +23,10 @@ export class Rocket extends React.Component {
             pathArray.push(element);
         }, this);
 
-        // console.log(pathArray);
-        // console.log(this.props.appState);
-
         let emptyTrack = pathArray.reverse().slice(this.props.appState);
         emptyTrack.forEach(function(element) {
-            // console.log(element);
             element.classList.add('track-container__track--completed');
         }, this);
-
-        // let completedTrack = pathArray.reverse().shift();
-        // completedTrack.classList.add('track-container__track--completed');
-        // completedTrack.classList.remove('track-container__track--empty');
 
         rocket.style = `transform: translateY(-${113 * this.props.appState}px)`;
     }
