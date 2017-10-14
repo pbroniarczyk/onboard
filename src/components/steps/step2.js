@@ -48,7 +48,7 @@ export class Step2 extends React.Component {
             },
             salary: '',
             work: {
-                types: {
+                type: {
                     employment: this.refs.employment.state.switched,
                     contractWork: this.refs.contractWork.state.switched,
                     contractComission: this.refs.contractComission.state.switched,
@@ -85,11 +85,11 @@ export class Step2 extends React.Component {
 
                     <section className="section-wrapper">
                         <p className="section-wrapper__title">Forma zatrudnienia</p>
-                        <div className="contract-types">
-                            <Checkbox className="contract-types__checkbox" ref="employment" label="Umowa o pracę" />
-                            <Checkbox className="contract-types__checkbox" ref="contractWork" label="Umowa o dzieło" />
-                            <Checkbox className="contract-types__checkbox" ref="contractComission" label="Umowa zlecenia" />
-                            <Checkbox className="contract-types__checkbox" ref="b2b" label="Umowa B2B" />
+                        <div className="contract-type">
+                            <Checkbox className="contract-type__checkbox" ref="employment" label="Umowa o pracę" />
+                            <Checkbox className="contract-type__checkbox" ref="contractWork" label="Umowa o dzieło" />
+                            <Checkbox className="contract-type__checkbox" ref="contractComission" label="Umowa zlecenia" />
+                            <Checkbox className="contract-type__checkbox" ref="b2b" label="Umowa B2B" />
                         </div>
                     </section>
 

@@ -40,11 +40,11 @@ export class Step5 extends React.Component {
             },
             salary: this.props.user.salary,
             work: {
-                types: {
-                    employment: this.props.user.work.types.employment,
-                    contractWork: this.props.user.work.types.contractWork,
-                    contractComission: this.props.user.work.types.contractComission,
-                    b2b: this.props.user.work.types.b2b,
+                type: {
+                    employment: this.props.user.work.type.employment,
+                    contractWork: this.props.user.work.type.contractWork,
+                    contractComission: this.props.user.work.type.contractComission,
+                    b2b: this.props.user.work.type.b2b,
                 },
                 place: {
                     stationary: this.props.user.work.place.stationary,
@@ -62,7 +62,6 @@ export class Step5 extends React.Component {
     }
 
     render() {
-        console.log("USER!: ", this.props.user)
         const btnStyle = {
             padding: 0,
             borderRadius: '5px'

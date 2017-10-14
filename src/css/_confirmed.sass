@@ -5,6 +5,12 @@
     justify-content: center
     height: 100%
 
+    +elm(label)
+        margin-right: 15px
+
+    +elm(item)
+        color: $accent_blue
+
 .confirmed 
     width: 100%
     
@@ -23,3 +29,14 @@
             text:
                 transform: uppercase
                 decoration: underline
+
+.confirmed-chips
+    display: flex
+    align-items: center
+
+    +elm(chip)
+        
+    .confirmed-wrapper__item
+        margin: 5px 5px 5px 0!important
+        &:first-child
+            margin-left: 15px!important

@@ -45,7 +45,6 @@ export class Step1 extends React.Component {
     }
 
     handleSlider1Change(event, value) {
-        console.log(this)
         this.setState({rangeValue1: this.slider.get(value)});
     }
     handleSlider2Change(event, value) {
