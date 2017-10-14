@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 // Material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import blue500 from 'material-ui/styles/colors.js';
+import { red600 } from 'material-ui/styles/colors.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Component
@@ -16,7 +16,7 @@ injectTapEventPlugin();
 
 const theme = getMuiTheme({
     palette: {
-        primary1Color: blue500,
+        primary1Color: red600,
     }
 });
 
