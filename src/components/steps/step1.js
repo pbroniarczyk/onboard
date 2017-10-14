@@ -97,6 +97,7 @@ export class Step1 extends React.Component {
                             ref="acomp1"
                             id="positions"
                             hintText="Nazwa stanowiska"
+                            filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={dataSource[0].positions}
                             onClose={this.handleChange.bind(this)}
                         />
@@ -104,6 +105,7 @@ export class Step1 extends React.Component {
                             ref="acomp2"
                             id="cities"
                             hintText="Miasto"
+                            filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={dataSource[1].cities}
                             onClose={this.handleChange.bind(this)}
                         />
