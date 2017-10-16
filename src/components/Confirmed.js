@@ -23,7 +23,6 @@ export default class Confirmed extends React.Component {
     handleClose() { this.setState({ open: false });}
 
     render() {
-        console.log(this.props.user);
         return (
             <div className="confirmed">
                 <div className="confirmed-wrapper">

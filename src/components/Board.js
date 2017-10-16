@@ -70,10 +70,6 @@ export class Board extends React.Component {
         });
     }
 
-    componentWillUpdate() {
-        console.log("update board: ", this.state.user);
-    }
-
     render() {
         if(this.state.step !== 5) {
             return(

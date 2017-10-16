@@ -37,7 +37,6 @@ export class Step2 extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log(this.props)
         const user = {
             position: this.props.user.position,
             city: this.props.user.city,
@@ -66,7 +65,6 @@ export class Step2 extends React.Component {
     }
 
     render() {
-        console.log('USER: ', this.props);
         return(
             <div className="step step2">
                 <BoardHeader title={'Warunki współpracy'} subtitle={'Zdecyduj, ile chcesz zarabiasz i określ warunki swojego zatrudnienia.'} />
