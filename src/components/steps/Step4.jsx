@@ -1,13 +1,13 @@
 import React from 'react';
 
 // Components
-import { BoardHeader } from '../BoardHeader';
-// import { Input } from './components/Input';
+import { BoardHeader } from '../BoardHeader.jsx';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import AutoComplete from 'material-ui/AutoComplete';
 
-const skills = ['JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL',];
+const skills = ['JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL', 'C++', 'Ruby', 'Redux', 'Java', 'Bootstrap', 'Foundation', 'Flask', 'TypeScript', 'Angular', 'Vue', 'NodeJS', 'Git', 'Webpack', 'Gulp', 'Grunt'];
+const skillCloud = [...skills];
 
 const classHandler = (element, innerText) => {
     if(element.classList.contains('skill--full')) {
@@ -59,16 +59,16 @@ export class Step4 extends React.Component {
         
     }
 
-    selectSkill(event) {
+    selectSkill(element, index) {
         this.setState(
             {skillCounter: this.state.skillCounter + 1},
             () => this.checkDisabled()
         );
 
-        let skillSelected = event.currentTarget.innerText,
+        let skillSelected = element,
             emptySkill = document.querySelectorAll('.skill--empty');
         classHandler(emptySkill[0], skillSelected);
-        event.currentTarget.remove();
+        skillCloud.splice(index, 1)
     }
 
     removeSkill(event) {
@@ -82,37 +82,11 @@ export class Step4 extends React.Component {
     }
 
     componentWillUnmount() {
-        const user = {
-            position: this.props.user.position,
-            city: this.props.user.city,
-            relocate: this.props.user.relocate,
-            experience: {
-                total: this.props.user.experience.total,
-                last: this.props.user.experience.last,
-            },
-            salary: this.props.user.salary,
-            work: {
-                type: {
-                    employment: this.props.user.work.type.employment,
-                    contractWork: this.props.user.work.type.contractWork,
-                    contractComission: this.props.user.work.type.contractComission,
-                    b2b: this.props.user.work.type.b2b,
-                },
-                place: {
-                    stationary: this.props.user.work.place.stationary,
-                    remote: this.props.user.work.place.remote,
-                }
-            },
-            paths: this.props.user.paths,
-            skills: []
-        };
-        
+        const user = { skills: [] };
         const skillsArray = document.querySelectorAll('.skill--full');
-        skillsArray.forEach(function(skill) {
-            user.skills.push(skill.innerText);
-        }, this);
+        skillsArray.forEach(skill => user.skills.push(skill.innerText), this);
 
-        this.props.userUpdate(user);
+        this.props.userProfileUpdate(user);
     }
 
     render() {
@@ -129,22 +103,12 @@ export class Step4 extends React.Component {
                             onClose={this.inputSelectHandler.bind(this)}
                             menuCloseDelay={0}
                             disabled={this.state.inputDisabled}
+                            fullWidth={true}
                         />
                     </div>
 
                     <div className="skill-cloud">
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>JavaScript</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Python</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>HTML</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>CSS3</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>React</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Sass</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>JavaScript</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Python</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>HTML</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>CSS3</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>React</span>
-                        <span className="skill-cloud__item" onClick={this.selectSkill.bind(this)}>Sass</span>
+                        {skillCloud.map((e,i) => <span key={i} className="skill-cloud__item" onClick={this.selectSkill.bind(this, e, i)}>{e}</span>)}
                     </div>
 
                     <div className="skill-counter">

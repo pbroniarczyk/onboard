@@ -1,26 +1,19 @@
 import React from 'react';
 
 // Component
-import { Step1 } from './steps/Step1';
-import { Step2 } from './steps/Step2';
-import { Step3 } from './steps/Step3';
-import { Step4 } from './steps/Step4';
-import { Step5 } from './steps/Step5';
+import { Step1 } from './steps/Step1.jsx';
+import { Step2 } from './steps/Step2.jsx';
+import { Step3 } from './steps/Step3.jsx';
+import { Step4 } from './steps/Step4.jsx';
+import { Step5 } from './steps/Step5.jsx';
 
 export class Steps extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            disabled: true
-        };
-    }
-
     render() {
         switch (this.props.step) {
             case 0:
                 return(
                     <section id="steps-wrapper">
-                        <Step1 userUpdate={this.props.userUpdate} nextStepHandler={this.props.nextStep} />
+                        <Step1 userProfileUpdate={this.props.userProfileUpdate} nextStepHandler={this.props.nextStep} />
                     </section>
                 )
                 break;
@@ -28,7 +21,7 @@ export class Steps extends React.Component {
             case 1:
                 return(
                     <section id="steps-wrapper">
-                        <Step2 user={this.props.user} userUpdate={this.props.userUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
+                        <Step2 user={this.props.user} userProfileUpdate={this.props.userProfileUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
                     </section>
                 )
                 break;
@@ -36,7 +29,7 @@ export class Steps extends React.Component {
             case 2:
                 return(
                     <section id="steps-wrapper">
-                        <Step3 user={this.props.user} userUpdate={this.props.userUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
+                        <Step3 user={this.props.user} userProfileUpdate={this.props.userProfileUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
                     </section>
                 )
                 break;
@@ -44,7 +37,7 @@ export class Steps extends React.Component {
             case 3:
                 return(
                     <section id="steps-wrapper">
-                        <Step4 user={this.props.user} userUpdate={this.props.userUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
+                        <Step4 user={this.props.user} userProfileUpdate={this.props.userProfileUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
                     </section>
                 )
                 break;
@@ -52,7 +45,7 @@ export class Steps extends React.Component {
             case 4:
                 return(
                     <section id="steps-wrapper">
-                        <Step5 user={this.props.user} userUpdate={this.props.userUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
+                        <Step5 user={this.props.user} userProfileUpdate={this.props.userProfileUpdate} nextStepHandler={this.props.nextStep} prevStepHandler={this.props.prevStep}/>
                     </section>
                 )
                 break;

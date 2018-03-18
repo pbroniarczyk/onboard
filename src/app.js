@@ -5,18 +5,18 @@ import { render } from 'react-dom';
 // Material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { red600 } from 'material-ui/styles/colors.js';
+import { lightBlue700 } from 'material-ui/styles/colors.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Component
-import Navbar from './components/Navbar';
-import { Board } from './components/Board';
+import Navbar from './components/Navbar.jsx';
+import { Board } from './components/Board.jsx';
 
 injectTapEventPlugin();
 
 const theme = getMuiTheme({
     palette: {
-        primary1Color: red600,
+        primary1Color: lightBlue700,
     }
 });
 

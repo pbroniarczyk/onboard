@@ -1,13 +1,13 @@
 import React from 'react';
 
 // Components
-import { BoardHeader } from '../BoardHeader';
+import { BoardHeader } from '../BoardHeader.jsx';
 
-export class Cover2 extends React.Component {
+export class Cover3 extends React.Component {
     render() {
         return(
             <div className="cover-wrapper">
-                <div className="cover-wrapper__cover2">
+                <div className="cover-wrapper__cover3">
                     <BoardHeader title={'Podsumowanie'} subtitle={'Twoje doświadczenie i oczekiwania.'} />
                     <section className="cover-body">
                         <div className="section">
@@ -19,6 +19,10 @@ export class Cover2 extends React.Component {
                             <h1 className="section__title">5600zł - 9300zł</h1>
                             <p className="section__subtitle">Rekomendowany przedział zarobków</p>
                         </div>*/}
+                        <div className="section">
+                            <h1 className="section__title">{this.props.user.salary}</h1>
+                            <p className="section__subtitle">Twoje minimalne oczekiwania finansowe</p>
+                        </div>
                     </section>
                 </div>
             </div>

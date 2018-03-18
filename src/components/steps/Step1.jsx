@@ -1,9 +1,7 @@
 import React from 'react';
 
 // Components
-import { BoardHeader } from '../BoardHeader';
-// import { RangeSlider } from './components/RangeSlider';
-// import { Input } from './components/Input';
+import { BoardHeader } from '../BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import Slider from 'material-ui/Slider';
@@ -66,20 +64,16 @@ export class Step1 extends React.Component {
 
     componentWillUnmount() {
         const user = {
-            position: '',
-            city: '',
+            position: this.refs.acomp1.requestsList[0].text,
+            city: this.refs.acomp2.requestsList[0].text,
             relocate: this.refs.relocate.state.switched,
             experience: {
                 total: this.refs.expTotal.state.value,
                 last: this.refs.expLast.state.value,
             }
         };
-        let position = this.refs.acomp1.requestsList[0].text,
-            city = this.refs.acomp2.requestsList[0].text;
-
-        user.position = position;
-        user.city = city;
-        this.props.userUpdate(user);
+        
+        this.props.userProfileUpdate(user)
     }
 
     render() {
@@ -100,6 +94,7 @@ export class Step1 extends React.Component {
                             filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={dataSource[0].positions}
                             onClose={this.handleChange.bind(this)}
+                            fullWidth={true}
                         />
                         <AutoComplete
                             ref="acomp2"
@@ -108,6 +103,7 @@ export class Step1 extends React.Component {
                             filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={dataSource[1].cities}
                             onClose={this.handleChange.bind(this)}
+                            fullWidth={true}
                         />
                     </div>
 

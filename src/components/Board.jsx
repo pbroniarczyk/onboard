@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Components
-import { Cover } from './Cover';
-import { Steps } from './Steps';
-import { Rocket } from './Rocket';
-import Confirmed from './Confirmed';
+import { Cover } from './Cover.jsx';
+import { Steps } from './Steps.jsx';
+import { Rocket } from './Rocket.jsx';
+import Confirmed from './Confirmed.jsx';
 
 
 export class Board extends React.Component {
@@ -12,10 +12,10 @@ export class Board extends React.Component {
         super(props);
         this.nextStep = this.nextStep.bind(this);
         this.prevStep = this.prevStep.bind(this);
-        this.updateUser = this.updateUser.bind(this);
+        this.userProfileUpdate = this.userProfileUpdate.bind(this);
 
         this.state = {
-            step: 0,
+            step: 2,
             user: {
                 mail: '',
                 position: '',
@@ -56,22 +56,10 @@ export class Board extends React.Component {
         });
     }
 
-    updateUser(user) {
-        this.setState(() => {
-            this.state.user.position = user.position;
-            this.state.user.city = user.city;
-            this.state.user.mail = user.mail;
-            this.state.user.relocate = user.relocate;
-            this.state.user.experience = user.experience;
-            this.state.user.salary = user.salary;
-            this.state.user.work = user.work;
-            this.state.user.paths = user.paths;
-            this.state.user.skills = user.skills;
-        });
-    }
-
-    componentWillUpdate() {
-        console.log("update board: ", this.state.user);
+    userProfileUpdate(data) {
+        let currentState = this.state.user;
+        let updatedState = Object.assign(currentState, data)
+        this.setState({ user: updatedState })
     }
 
     render() {
@@ -81,7 +69,13 @@ export class Board extends React.Component {
                     <div className="board">
                         <Cover user={this.state.user} step={this.state.step} prevStep={this.prevStep}/>
                         <Rocket appState={this.state.step} />
-                        <Steps user={this.state.user} userUpdate={this.updateUser} nextStep={this.nextStep} prevStep={this.prevStep} step={this.state.step} />
+                        <Steps 
+                            user={this.state.user}
+                            nextStep={this.nextStep} 
+                            prevStep={this.prevStep} 
+                            step={this.state.step} 
+                            userProfileUpdate={this.userProfileUpdate}
+                        />
                     </div>
                 </section>
             )

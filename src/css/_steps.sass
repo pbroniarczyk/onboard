@@ -21,7 +21,7 @@
             transition: $transition
             &:focus
                 outline: transparent
-                border-bottom: 2px solid #00bcd4
+                border-bottom: 2px solid $accent_blue
 
 .step-body
     min-height: 348px
@@ -79,13 +79,16 @@
                 border-left: 1px solid lightgray
                 border-top: 1px solid lightgray
 
+.step-body__input-wrapper > div
+    width: 100%!important
+
 .btn-group
     transform: translateX(55px)
     display: flex
     justify-content: flex-end
 
 
-// Step 1
+// ======================================================== Step 1
 .section-wrapper
     margin-top: 40px
 
@@ -93,7 +96,27 @@
         margin: 0
         margin-bottom: 10px
 
-// Step 3
+.title__tooltip
+    display: none
+    position: absolute
+    background-color: #333
+    color: #fff
+    padding: 5px 10px
+    font-size: 10px
+    font-weight: normal
+    letter-spacing: 1px
+    margin-top: 7px
+
+    +mod('visible')
+        display: block
+
+// ======================================================== Step 3
+#salary-input::placeholder
+    font-size: 14px
+    color: #95989A
+
+
+// ======================================================== Step 3
 .path
     display: flex
     justify-content: space-between
@@ -113,14 +136,20 @@
 
     +elm('checkbox')
         width: 24px!important
+        
+    +elm('title')
+        width: 150px
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
 
     +mod('checked')
-        background-color: $accent_blue
+        border-color: $accent_blue
 
 .path--checked
     .path__percentage,
     .path__title
-        color: #fff
+        color: $accent_blue
 
 .careerPath-desc
     color: $dark_gray
@@ -129,7 +158,7 @@
     margin-left: auto
     text-align: right
 
-// Step 4
+// ======================================================== Step 4
 .step4 .step-body 
     transform: translateY(-40px)
 
@@ -138,6 +167,8 @@
     flex-wrap: wrap
     margin-bottom: 30px
     min-height: 65px
+    max-height: 90px
+    overflow-y: hidden
     position: relative
 
     +elm('item')
@@ -203,7 +234,7 @@
         &:hover
             cursor: pointer
 
-// Step5
+// ======================================================== Step5
 .step5 .step-body
     min-height: 100%
     display: flex
@@ -231,10 +262,6 @@
         color: #fff!important
     +mod('signin')
         margin-top: 25px
-        // button
-        //     background-color: $accent!important
-        //     span
-        //         color: #fff!important
 
     .social
         display: flex
@@ -258,3 +285,8 @@
             @extend ::before
             bottom: 47%
             right: 0
+
+    .input-group
+        input
+            margin-bottom: 10px!important
+            font-size: 14px

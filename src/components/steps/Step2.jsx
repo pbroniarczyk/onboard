@@ -1,8 +1,7 @@
 import React from 'react';
 
 // Components
-import { BoardHeader } from '../BoardHeader';
-// import { Input } from './components/Input';
+import { BoardHeader } from '../BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
@@ -37,16 +36,8 @@ export class Step2 extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log(this.props)
-        const user = {
-            position: this.props.user.position,
-            city: this.props.user.city,
-            relocate: this.props.user.relocate,
-            experience: {
-                total: this.props.user.experience.total,
-                last: this.props.user.experience.last,
-            },
-            salary: '',
+        const newData = {
+            salary: this.state.value + ' zł',
             work: {
                 type: {
                     employment: this.refs.employment.state.switched,
@@ -59,14 +50,12 @@ export class Step2 extends React.Component {
                     remote: this.refs.remote.state.switched,
                 }
             },
-        };
-        let salary = this.state.value + 'zł';
-        user.salary = salary;
-        this.props.userUpdate(user);
+        }
+
+        this.props.userProfileUpdate(newData)
     }
 
     render() {
-        console.log('USER: ', this.props);
         return(
             <div className="step step2">
                 <BoardHeader title={'Warunki współpracy'} subtitle={'Zdecyduj, ile chcesz zarabiasz i określ warunki swojego zatrudnienia.'} />
@@ -77,9 +66,11 @@ export class Step2 extends React.Component {
                             value={this.state.value} 
                             type="number" 
                             name="minSalary" 
-                            hintText="Minimalne oczekiwania finansowe (netto)" 
+                            placeholder="Minimalne oczekiwania finansowe (netto)" 
                             step="100"
                             errorText={this.state.error}
+                            fullWidth={true}
+                            id="salary-input"
                         />
                     </div>
 

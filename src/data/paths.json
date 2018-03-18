@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Frontend Developer",
+        "percentage": 48
+    },
+    {
+        "name": "Team Leader",
+        "percentage": 28
+    },
+    {
+        "name": "Senior Software Developer",
+        "percentage": 76
+    },
+    {
+        "name": "JavaScript Developer",
+        "percentage": 57
+    }
+]

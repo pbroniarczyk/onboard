@@ -2,13 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 
 // Components
-import { BoardHeader } from '../BoardHeader';
-// import { RangeSlider } from './components/RangeSlider';
-// import { Input } from './components/Input';
+import { BoardHeader } from '../BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-
+import paths from '../../data/paths.json';
 
 export class Step3 extends React.Component {
     constructor() {
@@ -16,8 +14,11 @@ export class Step3 extends React.Component {
         this.state = {
             disabled: true,
             checked: [false, false, false, false],
+            hovered: [false, false, false, false],
             class: ''
         };
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e) {
@@ -42,37 +43,23 @@ export class Step3 extends React.Component {
         }
     }
 
-    componentWillUnmount() {
-        const user = {
-            position: this.props.user.position,
-            city: this.props.user.city,
-            relocate: this.props.user.relocate,
-            experience: {
-                total: this.props.user.experience.total,
-                last: this.props.user.experience.last,
-            },
-            salary: this.props.user.salary,
-            work: {
-                type: {
-                    employment: this.props.user.work.type.employment,
-                    contractWork: this.props.user.work.type.contractWork,
-                    contractComission: this.props.user.work.type.contractComission,
-                    b2b: this.props.user.work.type.b2b,
-                },
-                place: {
-                    stationary: this.props.user.work.place.stationary,
-                    remote: this.props.user.work.place.remote,
-                }
-            },
-            paths: []
-        };
-        
-        const pathsArray = document.querySelectorAll('.path--checked .path__title');
-        pathsArray.forEach(function(path) {
-            user.paths.push(path.innerText);
-        }, this);
+    handleMouseOn(index) {
+        const array = this.state.hovered;
+        array.splice(index, 1, true); 
+        this.setState({ hovered: array }) 
+    }
+    handleMouseOut(index) {
+        const array = this.state.hovered;
+        array.splice(index, 1, false); 
+        this.setState({ hovered: array })
+    }
 
-        this.props.userUpdate(user);
+    componentWillUnmount() {
+        const user = { paths: [] };
+        const pathsArray = document.querySelectorAll('.path--checked .path__title');
+        pathsArray.forEach(path => user.paths.push(path.innerText), this);
+
+        this.props.userProfileUpdate(user)
     }
 
     render() {
@@ -82,9 +69,15 @@ export class Step3 extends React.Component {
                 <div className="step-body">
                     {this.state.checked.map((e,i) => {
                         return (
-                            <div className={classNames('path', { 'path--checked': this.state.checked[i]})} data-index={i} key={i} onClick={this.handleClick.bind(this)}>
-                                <span className="path__percentage">38%</span>
-                                <span className="path__title">Front-End Developer</span>
+                            <div className={classNames('path', { 'path--checked': this.state.checked[i]})} data-index={i} key={i} onClick={this.handleClick}>
+                                <span className="path__percentage">{paths[i].percentage + '%'}</span>
+                                <span 
+                                    onMouseOver={this.handleMouseOn.bind(this, i)} 
+                                    onMouseOut={this.handleMouseOut.bind(this, i)} 
+                                    className="path__title">
+                                    {paths[i].name}
+                                    <span className={`title__tooltip ${this.state.hovered[i] ? "title__tooltip--visible" : ""}`}>{paths[i].name}</span>
+                                </span>
                                 <Checkbox ref={'checkbox'+i} className="path__checkbox" checked={this.state.checked[i]} />
                             </div>
                         )
