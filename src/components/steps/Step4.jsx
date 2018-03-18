@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import { BoardHeader } from '../BoardHeader.jsx';
+import BoardHeader from '../BoardHeader.jsx';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import AutoComplete from 'material-ui/AutoComplete';

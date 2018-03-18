@@ -1,14 +1,14 @@
 import React from 'react';
 
 // Components
-import { BoardHeader } from '../BoardHeader.jsx';
+import BoardHeader from '../BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import Slider from 'material-ui/Slider';
 import AutoComplete from 'material-ui/AutoComplete';
 
 
-export class Step1 extends React.Component {
+export default class Step1 extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -33,7 +33,7 @@ export class Step1 extends React.Component {
 
         for (let key in refs) {
             if (refs.hasOwnProperty(key)) {
-                let value = refs[key].requestsList[0].text;
+                let value = refs[key] && refs[key].requestsList ? refs[key].requestsList[0].text : null;
                 valArray.push(value);
             }
             if (valArray.length === 2) {

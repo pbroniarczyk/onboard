@@ -15,7 +15,7 @@ export class Board extends React.Component {
         this.userProfileUpdate = this.userProfileUpdate.bind(this);
 
         this.state = {
-            step: 2,
+            step: 0,
             user: {
                 mail: '',
                 position: '',

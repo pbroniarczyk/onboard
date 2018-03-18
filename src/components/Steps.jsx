@@ -1,13 +1,20 @@
 import React from 'react';
 
 // Component
-import { Step1 } from './steps/Step1.jsx';
+import Step1 from './steps/Step1.jsx';
 import { Step2 } from './steps/Step2.jsx';
 import { Step3 } from './steps/Step3.jsx';
 import { Step4 } from './steps/Step4.jsx';
 import { Step5 } from './steps/Step5.jsx';
 
 export class Steps extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            disabled: true
+        };
+    }
+
     render() {
         switch (this.props.step) {
             case 0:

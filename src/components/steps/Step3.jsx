@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 // Components
-import { BoardHeader } from '../BoardHeader.jsx';
+import BoardHeader from '../BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';

@@ -19,15 +19,6 @@ export class Rocket extends React.Component {
         const pathArray = [];
         let pathTrack = document.querySelectorAll('.track-container__track--empty');
 
-        // pathTrack.forEach(function(element) {
-        //     pathArray.push(element);
-        // }, this);
-
-        // let emptyTrack = pathArray.reverse().slice(this.props.appState);
-        // emptyTrack.forEach(function(element) {
-        //     element.classList.add('track-container__track--completed');
-        // }, this);
-
         rocket.style = `transform: translateY(-${113 * this.props.appState}px)`;
     }
 

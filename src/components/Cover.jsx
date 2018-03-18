@@ -2,8 +2,8 @@ import React from 'react';
 
 // Components
 import Cover1 from './cover/Cover1.jsx';
-import { Cover2 } from './cover/Cover2.jsx';
-import { Cover3 } from './cover/Cover3.jsx';
+import Cover2 from './cover/Cover2.jsx';
+import Cover3 from './cover/Cover3.jsx';
 import Cover5 from './cover/Cover5.jsx';
 
 export class Cover extends React.Component {
