@@ -1,0 +1,61 @@
+/* ========== GLOBAL ========== */
+html,
+body,
+#app,
+.wrapper {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--gray);
+}
+
+p {
+    font-size: 14px;
+    color: var(--gray);
+}
+
+h1, h2, h3, h4 {
+    color: var(--dark_gray);
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 16px;
+    color: var(--dark_gray);
+}
+
+input[type=checkbox] {
+    color: var(--dark_gray);
+}
+
+
+/* ========== VARIABLES ========== */
+:root {
+    --bg-color: #ECECEC;
+    --accent: #FC4445;
+    --accent_blue: #0388d1;
+    --gray: #95989A;
+    --light_gray: #E5E5E5;
+    --dark_gray: #404040;
+
+    --transition: cubic-bezier(0.23, 1, 0.32, 1) 300ms;
+  }

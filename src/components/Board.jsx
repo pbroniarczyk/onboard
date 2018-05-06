@@ -6,6 +6,9 @@ import { Steps } from './Steps.jsx';
 import { Rocket } from './Rocket.jsx';
 import Confirmed from './Confirmed.jsx';
 
+// Assets
+import './board.css';
+
 
 export class Board extends React.Component {
     constructor(props) {

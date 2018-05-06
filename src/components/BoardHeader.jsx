@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Assets
+import './board.css';
+
 const BoardHeader = (props) => {
     return(
         <div className="header">

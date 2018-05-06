@@ -1,0 +1,360 @@
+/* Main step & indexStep styles */
+#steps-wrapper {
+    width: 464px;
+    padding: 25px 45px 25px 70px;
+    box-sizing: border-box;
+}
+
+.step {
+    padding-right: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.step input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 36px;
+    margin-bottom: 1px;
+    border: none;
+    border-bottom: 2px solid var(--light_gray);
+    transition: var(--transition);
+}
+
+.step input:focus {
+    outline: transparent;
+    border-bottom: 2px solid var(--accent_blue);
+}
+
+.step-body {
+    min-height: 348px;
+}
+    
+.step-body__checkbox {
+    padding: 10px 0 5px;
+}
+
+.step-body__text {
+    margin: 0;
+    height: 35px;
+    line-height: 3;
+    font-size: 14px;
+
+}
+
+.step-body__input-wrapper {
+    margin-bottom: 15px;
+
+}
+
+.slider-wrapper__slider > div {
+    height: 30px!important;
+    margin: 7px 0 0 0!important;
+
+} 
+
+.slider-wrapper--hidden {
+    transition: var(--transition);
+    opacity: 0;
+    height: 0;
+
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: var(--transition);
+}
+.slider-wrapper--hidden {
+    opacity: 0;
+    height: 0;
+}
+
+.slider-wrapper__slider {
+    width: 100%;
+}
+
+.slider-wrapper__bubble {
+    min-width: 80px;
+    height: auto;
+    margin-left: 20px;
+    border: 1px solid var(--light_gray);
+    border-radius: 3px;
+    text-align: center;
+    line-height: 2;
+    position: relative;
+}
+
+.slider-wrapper__bubble::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -8px;
+    transform: rotate(-45deg);
+    background-color: white;
+    display: block;
+    width: 13px;
+    height: 13px;
+    border-left: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+
+.step-body__input-wrapper > div {
+    width: 100%!important;
+}
+
+.btn-group {
+    transform: translateX(55px);
+    display: flex;
+    justify-content: flex-end;
+} 
+
+
+ /* ======================================================== Step 1 */
+.section-wrapper {
+    margin-top: 40px;
+}
+
+.section-wrapper__title {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.title__tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-top: 7px;
+}
+
+.title__tooltip--visible {
+    display: block;
+}
+
+ /* ======================================================== Step 3 */
+#salary-input::placeholder {
+    font-size: 14px;
+    color: #95989A;
+}
+
+
+ /* ======================================================== Step 3 */
+.path {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border: 1px solid var(--light_gray);
+    margin-bottom: 10px;
+    color: var(--dark_gray);
+    font-size: 17px;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.path:last-child {
+    margin-bottom: 0;
+}
+
+.path:hover {
+    cursor: pointer;
+}
+
+.path__checkbox {
+    width: 24px!important;
+}
+    
+.path__title {
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.path--checked {
+    border-color: var(--accent_blue);
+}
+
+.path--checked .path__percentage,
+.path--checked .path__title {
+    color: var(--accent_blue);
+}
+
+.careerPath-desc {
+    color: var(--dark_gray);
+    font-size: 11px;
+    display: block;
+    margin-left: auto;
+    text-align: right;
+}
+
+ /* ======================================================== Step 4 */
+.step4 .step-body {
+    transform: translateY(-40px);
+} 
+
+.skill-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    min-height: 65px;
+    max-height: 90px;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.skill-cloud__item {
+    font-size: 12px;
+    display: inline-table;
+    border: 1px solid var(--light_gray);
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: var(--dark_gray);
+    margin-right: 5px;
+    margin-bottom: 6px;
+}
+
+.skill-cloud__item:hover {
+    cursor: pointer;
+}
+
+.skill-cloud__item--disabled::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.skill-counter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.skill-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skill {
+    background: var(--light_gray);
+    width: 143px;
+    display: block;
+    height: 28px;
+    margin-bottom: 7px;
+    margin-right: 7px;
+    border: 1px solid var(--light_gray);
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.skill:nth-child(even) {
+    margin-right: 0;
+}
+
+.skill__btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    margin-left: 85%;
+    cursor: pointer;
+}
+
+.skill--full {
+    text-align: center;
+    padding-top: 2px;
+    color: #fff;
+    background-color: var(--accent_blue);
+    border: 1px solid var(--accent_blue);
+}
+.skill--full:hover {
+    cursor: pointer;
+}
+
+ /* ======================================================== Step5 */
+.step5 .step-body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.step5 .step-body__btn {
+    width: 300px;
+    border-radius: 2px;
+    border: none;
+    margin-bottom: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+
+.step5 .step-body__btn:last-child {
+    margin-bottom: 0;
+}
+
+.step5 .step-body__btn:hover {
+    cursor: pointer;
+}
+
+.step5 .step-body--facebook {
+    background-color: #3b5998!important;
+    color: #fff!important;
+}
+
+.step5 .step-body--linkedin {
+    background-color: #0077B5!important;
+    color: #fff!important;
+}
+
+.step5 .step-body--signin {
+    margin-top: 25px;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    margin: 45px 0;
+}
+
+.separator {
+    position: relative;
+    text-align: center;
+    color: var(--light_gray);
+    margin-bottom: 15px;
+}
+.separator::before {
+    content: '';
+    position: absolute;
+    top: 48%;
+    display: block;
+    width: 42%;
+    height: 1px;
+    background-color: var(--light_gray);
+}
+.separator::after {
+    content: '';
+    position: absolute;
+    top: 48%;
+    bottom: 47%;
+    right: 0;
+    display: block;
+    width: 42%;
+    height: 1px;
+    background-color: var(--light_gray);
+}
+
+.input-group input {
+    margin-bottom: 10px!important;
+    font-size: 14px;
+}

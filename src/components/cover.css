@@ -1,0 +1,53 @@
+#cover {
+    width: 237px;
+    min-width: 237px;
+}
+
+.cover-wrapper {
+    padding: 25px 30px
+}
+.cover-wrapper__index {
+    padding: 20px 15px 65px 20px;
+}
+
+.cover-wrapper__astro {
+    width: 80px;
+    height: 115px;
+    margin: 0 auto;
+}
+
+.cover-wrapper__title {
+    margin: 45px 0 25px;
+}
+
+.cover-wrapper__text {
+    line-height: 23px;
+}
+
+/* Cover 2 */
+.cover-body {
+    padding-top: 20px
+
+}
+
+.cover-body .section {
+    margin-bottom: 20px;
+}
+
+.cover-body__title {
+    margin: 0;
+}
+
+.cover-body__subtitle {
+    margin: 0;
+}
+
+/* Cover 5 */
+.cover-wrapper__cover5 {
+    padding: 0;
+}
+
+.cover-wrapper .btn-group {
+    transform: translate(0, 70px);
+    justify-content: flex-start;
+}

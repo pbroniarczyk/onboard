@@ -22,8 +22,8 @@ export class Step3 extends React.Component {
     }
 
     handleClick(e) {
+        const checkArray = this.state.checked;
         const index = e.currentTarget.getAttribute('data-index'),
-              checkArray = this.state.checked,
               start_index = index,
               remove = 1,
               removed_elements = checkArray.splice(start_index, remove, !checkArray[index]);

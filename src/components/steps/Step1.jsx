@@ -51,11 +51,11 @@ export default class Step1 extends React.Component {
 
     handleCheck(event, isInputChecked) {
         const hiddenNode = event.target.parentNode.previousSibling;
-        let sliderVal = event.target.parentNode.previousSibling.childNodes[0].childNodes[1].value;
+        // let sliderVal = event.target.parentNode.previousSibling.childNodes[0].childNodes[1].value;
 
         if (isInputChecked) {
             hiddenNode.classList.add('slider-wrapper--hidden');
-            sliderVal = 0; 
+            // sliderVal = 0; 
             
         } else {
             hiddenNode.classList.remove('slider-wrapper--hidden');

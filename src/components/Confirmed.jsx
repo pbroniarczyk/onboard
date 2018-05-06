@@ -7,9 +7,10 @@ import Chip from 'material-ui/Chip';
 import Divider from 'material-ui/Divider';
 
 // Assets
+import './confirmed.css';
 import Icon from '../img/icon_envelope.png';
 
-const handleClick = () => location.reload();
+const handleClick = () => window.location.reload();
 
 export default class Confirmed extends React.Component {
     constructor() {
@@ -26,7 +27,7 @@ export default class Confirmed extends React.Component {
         return (
             <div className="confirmed">
                 <div className="confirmed-wrapper">
-                    <img className="confirmed__icon" src={Icon} />
+                    <img className="confirmed__icon" src={Icon} alt=""/>
                     <h2>Sprawdź swoją skrzynkę mailową</h2>
                     <p>Na adres <b>{this.props.user.mail}</b> <span>nie</span> została wysłana wiadomość z linkiem rejestracyjnym </p>
                     <div className="confirmed__btns">
