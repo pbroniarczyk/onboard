@@ -1,16 +1,17 @@
 import React from 'react';
 
 // Components
-// import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-export class Step5 extends React.Component {
+class Step5 extends React.Component {
     constructor() {
         super();
         this.state = {
             disabled: true
         };
+
+        this.inputValidate = this.inputValidate.bind(this);
     }
 
     inputValidate() {
@@ -48,8 +49,8 @@ export class Step5 extends React.Component {
                     </section>
                     <span className="separator">lub</span>
                     <section className="input-group">
-                        <input onChange={this.inputValidate.bind(this)} type="mail" id="user-mail" placeholder="E-mail" />
-                        <input onChange={this.inputValidate.bind(this)} type="password" id="user-password" placeholder="Hasło" />
+                        <input onChange={this.inputValidate} type="mail" id="user-mail" placeholder="E-mail" />
+                        <input onChange={this.inputValidate} type="password" id="user-password" placeholder="Hasło" />
                     </section>
                     <RaisedButton 
                         className="step-body__btn step-body--signin" 
@@ -63,3 +64,5 @@ export class Step5 extends React.Component {
         )
     }
 }
+
+export default Step5;

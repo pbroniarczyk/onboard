@@ -1,6 +1,6 @@
 .board-section {
     height: 100%; 
-    background-image: url('../img/bg.png');
+    background-image: url('../../img/bg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: bottom;

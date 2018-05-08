@@ -1,13 +1,13 @@
 import React from 'react';
 
 // Components
-import BoardHeader from '../BoardHeader.jsx';
+import BoardHeader from '../board/BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 
-export class Step2 extends React.Component {
+class Step2 extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -15,6 +15,8 @@ export class Step2 extends React.Component {
             value: '',
             error: ''
         };
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
@@ -62,7 +64,7 @@ export class Step2 extends React.Component {
                 <div className="step-body">
                     <div className="step-body__input-wrapper">
                         <TextField
-                            onChange={this.handleChange.bind(this)} 
+                            onChange={this.handleChange} 
                             value={this.state.value} 
                             type="number" 
                             name="minSalary" 
@@ -95,9 +97,17 @@ export class Step2 extends React.Component {
 
                 <div className="btn-group">
                     <FlatButton onClick={this.props.prevStepHandler} className="btn-group__prev-btn" label="poprzedni krok" default={true}/>
-                    <RaisedButton onClick={this.props.nextStepHandler} className="btn-group__next-btn" label="następny krok" primary={true} disabled={this.state.disabled}/>
+                    <RaisedButton
+                        onClick={this.props.nextStepHandler}
+                        className="btn-group__next-btn"
+                        label="następny krok"
+                        primary={true}
+                        disabled={this.state.disabled}
+                    />
                 </div>
             </div>
         )
     }
 }
+
+export default Step2;

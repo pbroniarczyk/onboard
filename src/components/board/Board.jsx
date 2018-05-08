@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Components
-import { Cover } from './Cover.jsx';
-import { Steps } from './Steps.jsx';
-import { Rocket } from './Rocket.jsx';
-import Confirmed from './Confirmed.jsx';
+import Cover from '../cover/Cover.jsx';
+import Steps from '../steps/Steps.jsx';
+import Rocket from '../rocket/Rocket.jsx';
+import Summary from '../summary/Summary.jsx';
 
 // Assets
 import './board.css';
@@ -61,7 +61,7 @@ export class Board extends React.Component {
 
     userProfileUpdate(data) {
         let currentState = this.state.user;
-        let updatedState = Object.assign(currentState, data)
+        let updatedState = Object.assign({}, currentState, data)
         this.setState({ user: updatedState })
     }
 
@@ -70,7 +70,11 @@ export class Board extends React.Component {
             return(
                 <section className="board-section">
                     <div className="board">
-                        <Cover user={this.state.user} step={this.state.step} prevStep={this.prevStep}/>
+                        <Cover
+                            user={this.state.user}
+                            step={this.state.step}
+                            prevStep={this.prevStep}
+                        />
                         <Rocket appState={this.state.step} />
                         <Steps 
                             user={this.state.user}
@@ -86,7 +90,7 @@ export class Board extends React.Component {
             return(
                 <section className="board-section">
                     <div className="board">
-                        <Confirmed user={this.state.user} />
+                        <Summary user={this.state.user} />
                     </div>
                 </section>
             )

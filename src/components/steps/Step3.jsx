@@ -2,13 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 // Components
-import BoardHeader from '../BoardHeader.jsx';
+import BoardHeader from '../board/BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import paths from '../../data/paths.json';
 
-export class Step3 extends React.Component {
+class Step3 extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -34,12 +34,9 @@ export class Step3 extends React.Component {
 
         for (let i = 0; i < checkArray.length; i++) {
             let element = checkArray[i];
-            if (element) {
-                return this.setState({disabled: false});
-            } else {
-                this.setState({disabled: true});
-            }
-            
+
+            if (element) return this.setState({ disabled: false });
+            else this.setState({ disabled: true });
         }
     }
 
@@ -65,11 +62,19 @@ export class Step3 extends React.Component {
     render() {
         return(
             <div className="step step3">
-                <BoardHeader title={'Ścieżki kariery'} subtitle={'Wybierz stanowisko, na którym chcesz się znaleźć po zdobyciu większego doświadczenia i umiejętności.'} />
+                <BoardHeader
+                    title={'Ścieżki kariery'}
+                    subtitle={'Wybierz stanowisko, na którym chcesz się znaleźć po zdobyciu większego doświadczenia i umiejętności.'}
+                />
                 <div className="step-body">
                     {this.state.checked.map((e,i) => {
                         return (
-                            <div className={classNames('path', { 'path--checked': this.state.checked[i]})} data-index={i} key={i} onClick={this.handleClick}>
+                            <div
+                                className={classNames('path', { 'path--checked': this.state.checked[i]})}
+                                data-index={i}
+                                key={i}
+                                onClick={this.handleClick}
+                            >
                                 <span className="path__percentage">{paths[i].percentage + '%'}</span>
                                 <span 
                                     onMouseOver={this.handleMouseOn.bind(this, i)} 
@@ -86,9 +91,17 @@ export class Step3 extends React.Component {
                 </div>
                 <div className="btn-group">
                     <FlatButton onClick={this.props.prevStepHandler} className="btn-group__prev-btn" label="poprzedni krok" default={true}/>
-                    <RaisedButton onClick={this.props.nextStepHandler} className="btn-group__next-btn" label="następny krok" primary={true} disabled={this.state.disabled}/>
+                    <RaisedButton
+                        onClick={this.props.nextStepHandler}
+                        className="btn-group__next-btn"
+                        label="następny krok"
+                        primary={true}
+                        disabled={this.state.disabled}
+                    />
                 </div>
             </div>
         )
     }
 }
+
+export default Step3;

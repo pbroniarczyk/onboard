@@ -8,8 +8,8 @@ import { lightBlue700 } from 'material-ui/styles/colors.js';
 
 
 // Component
-import Navbar from './components/Navbar.jsx';
-import { Board } from './components/Board.jsx';
+import Navbar from './components/navbar/Navbar.jsx';
+import { Board } from './components/board/Board.jsx';
 
 const theme = getMuiTheme({
     palette: {

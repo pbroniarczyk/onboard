@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import BoardHeader from '../BoardHeader.jsx';
+import BoardHeader from '../board/BoardHeader.jsx';
 
 const Cover2 = (props) => {
     return(

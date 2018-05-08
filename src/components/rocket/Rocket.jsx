@@ -1,12 +1,12 @@
 import React from 'react';
 
 // Assets
-import rocket from '../img/rocket.png';
-import cloud from '../img/cloud.png';
+import rocket from '../../img/rocket.png';
+import cloud from '../../img/cloud.png';
 import "./rocket.css";
 
 
-export class Rocket extends React.Component {
+class Rocket extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,9 +17,6 @@ export class Rocket extends React.Component {
 
     componentDidUpdate() {
         const rocket = document.getElementById('rocket');
-        // const pathArray = [];
-        // let pathTrack = document.querySelectorAll('.track-container__track--empty');
-
         rocket.style = `transform: translateY(-${113 * this.props.appState}px)`;
     }
 
@@ -40,3 +37,5 @@ export class Rocket extends React.Component {
         )
     }
 }
+
+export default Rocket;

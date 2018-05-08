@@ -1,12 +1,18 @@
 import React from 'react';
 
 // Components
-import BoardHeader from '../BoardHeader.jsx';
+import BoardHeader from '../board/BoardHeader.jsx';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import AutoComplete from 'material-ui/AutoComplete';
 
-const skills = ['JavaScript', 'CSS3', 'HTML', 'React', 'Python', 'Sass', 'SQL', 'GraphQL', 'C++', 'Ruby', 'Redux', 'Java', 'Bootstrap', 'Foundation', 'Flask', 'TypeScript', 'Angular', 'Vue', 'NodeJS', 'Git', 'Webpack', 'Gulp', 'Grunt'];
+const skills = [
+    'JavaScript', 'CSS3', 'HTML', 'React', 'Python',
+    'Sass', 'SQL', 'GraphQL', 'C++', 'Ruby', 'Redux',
+    'Java', 'Bootstrap', 'Foundation', 'Flask',
+    'TypeScript', 'Angular', 'Vue', 'NodeJS', 'Git',
+    'Webpack', 'Gulp', 'Grunt'
+];
 const skillCloud = [...skills];
 
 const classHandler = (element, innerText) => {
@@ -20,7 +26,7 @@ const classHandler = (element, innerText) => {
     element.innerText = innerText;
 };
 
-export class Step4 extends React.Component {
+class Step4 extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -28,6 +34,9 @@ export class Step4 extends React.Component {
             inputDisabled: false,
             skillCounter: 0
         };
+
+        this.inputSelectHandler = this.inputSelectHandler.bind(this);
+        this.removeSkill = this.removeSkill.bind(this);
     }
 
     checkDisabled() {
@@ -100,7 +109,7 @@ export class Step4 extends React.Component {
                             floatingLabelText="Nazwa umiejętności"
                             filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={skills}
-                            onClose={this.inputSelectHandler.bind(this)}
+                            onClose={this.inputSelectHandler}
                             menuCloseDelay={0}
                             disabled={this.state.inputDisabled}
                             fullWidth={true}
@@ -116,12 +125,12 @@ export class Step4 extends React.Component {
                         <p><span className="skill-count">{this.state.skillCounter}</span>/6</p>
                     </div>
                     <div className="skill-wrapper">
-                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
-                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
-                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
-                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
-                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
-                        <span className="skill skill--empty" onClick={this.removeSkill.bind(this)}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill}></span>
+                        <span className="skill skill--empty" onClick={this.removeSkill}></span>
                     </div>
 
                 </div>
@@ -133,3 +142,4 @@ export class Step4 extends React.Component {
         )
     }
 }
+export default Step4;

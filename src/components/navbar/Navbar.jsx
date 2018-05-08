@@ -1,9 +1,9 @@
 import React from 'react';
 
 // Assets
-import msg_icon from '../img/icon_messenger.png';
-import user_icon from '../img/icon_user.png';
-import logo from '../img/bluedot_logo.png';
+import msg_icon from '../../img/icon_messenger.png';
+import user_icon from '../../img/icon_user.png';
+import logo from '../../img/bluedot_logo.png';
 import "./navbar.css";
 
 

@@ -1,16 +1,16 @@
 import React from 'react';
 
 // Components
-import Cover1 from './cover/Cover1.jsx';
-import Cover2 from './cover/Cover2.jsx';
-import Cover3 from './cover/Cover3.jsx';
-import Cover5 from './cover/Cover5.jsx';
+import Cover1 from './Cover1.jsx';
+import Cover2 from './Cover2.jsx';
+import Cover3 from './Cover3.jsx';
+import Cover5 from './Cover5.jsx';
 
 // Assets 
 import "./cover.css";
 
 
-export class Cover extends React.Component {
+class Cover extends React.Component {
     render() {
         switch (this.props.step) {
             case 0:
@@ -19,21 +19,18 @@ export class Cover extends React.Component {
                         <Cover1 />
                     </section>
                 );
-                // break;
             case 1:
                 return(
                     <section id="cover">
                         <Cover2 user={this.props.user} />
                     </section>
                 );
-                // break;
             case 2:
                 return(
                     <section id="cover">
                         <Cover3 user={this.props.user} />
                     </section>
                 );
-                // break;
 
             case 3:
                 return(
@@ -41,7 +38,6 @@ export class Cover extends React.Component {
                         <Cover3 user={this.props.user} />
                     </section>
                 );
-                // break;
 
             case 4:
                 return(
@@ -49,7 +45,6 @@ export class Cover extends React.Component {
                         <Cover5 prevStepHandler={this.props.prevStep} />
                     </section>
                 );
-                // break;
         
             default:
                 return(
@@ -57,7 +52,8 @@ export class Cover extends React.Component {
                         DEFAULT
                     </section>
                 );
-                // break;
         }
     }
 }
+
+export default Cover;

@@ -12,4 +12,4 @@ const BoardHeader = (props) => {
     )
 };
 
-export default BoardHeader
+export default BoardHeader;

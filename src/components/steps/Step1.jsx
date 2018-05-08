@@ -1,14 +1,14 @@
 import React from 'react';
 
 // Components
-import BoardHeader from '../BoardHeader.jsx';
+import BoardHeader from '../board/BoardHeader.jsx';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import Slider from 'material-ui/Slider';
 import AutoComplete from 'material-ui/AutoComplete';
 
 
-export default class Step1 extends React.Component {
+class Step1 extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -25,6 +25,11 @@ export default class Step1 extends React.Component {
             [4, '4 lata'],
             [5, '> 5 lat']
         ]);
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSlider1Change = this.handleSlider1Change.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
+        this.handleSlider2Change = this.handleSlider2Change.bind(this);
     }
 
     handleChange(event) {
@@ -51,15 +56,9 @@ export default class Step1 extends React.Component {
 
     handleCheck(event, isInputChecked) {
         const hiddenNode = event.target.parentNode.previousSibling;
-        // let sliderVal = event.target.parentNode.previousSibling.childNodes[0].childNodes[1].value;
 
-        if (isInputChecked) {
-            hiddenNode.classList.add('slider-wrapper--hidden');
-            // sliderVal = 0; 
-            
-        } else {
-            hiddenNode.classList.remove('slider-wrapper--hidden');
-        }
+        if (isInputChecked) hiddenNode.classList.add('slider-wrapper--hidden');
+        else hiddenNode.classList.remove('slider-wrapper--hidden');
     }
 
     componentWillUnmount() {
@@ -93,7 +92,7 @@ export default class Step1 extends React.Component {
                             hintText="Nazwa stanowiska"
                             filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={dataSource[0].positions}
-                            onClose={this.handleChange.bind(this)}
+                            onClose={this.handleChange}
                             fullWidth={true}
                         />
                         <AutoComplete
@@ -102,7 +101,7 @@ export default class Step1 extends React.Component {
                             hintText="Miasto"
                             filter={AutoComplete.caseInsensitiveFilter}
                             dataSource={dataSource[1].cities}
-                            onClose={this.handleChange.bind(this)}
+                            onClose={this.handleChange}
                             fullWidth={true}
                         />
                     </div>
@@ -117,12 +116,12 @@ export default class Step1 extends React.Component {
                                 min={0}
                                 max={5}
                                 step={1}
-                                onChange={this.handleSlider1Change.bind(this)}
+                                onChange={this.handleSlider1Change}
                                 ref="expTotal"
                             />
                             <span className="slider-wrapper__bubble" >{this.state.rangeValue1}</span>
                         </div>
-                        <Checkbox className="step-body__checkbox" label="Nie mam doświdczenia" onCheck={this.handleCheck.bind(this)} />
+                        <Checkbox className="step-body__checkbox" label="Nie mam doświdczenia" onCheck={this.handleCheck} />
                     </div>
                     <div>
                         <p className="step-body__text">Staż w obecnym miejscu pracy</p>
@@ -132,19 +131,27 @@ export default class Step1 extends React.Component {
                                 min={0}
                                 max={5}
                                 step={1}
-                                onChange={this.handleSlider2Change.bind(this)}
+                                onChange={this.handleSlider2Change}
                                 ref="expLast"
                             />
                             <span className="slider-wrapper__bubble" >{this.state.rangeValue2}</span>
                         </div>
-                        <Checkbox className="step-body__checkbox" label="Nie pracuję" onCheck={this.handleCheck.bind(this)} />
+                        <Checkbox className="step-body__checkbox" label="Nie pracuję" onCheck={this.handleCheck} />
                     </div>
                 </div>
 
                 <div className="btn-group">
-                    <RaisedButton onClick={this.props.nextStepHandler} className="btn-group__next-btn" label="następny krok" primary={true} disabled={this.state.disabled}/>
+                    <RaisedButton
+                        onClick={this.props.nextStepHandler}
+                        className="btn-group__next-btn"
+                        label="następny krok"
+                        primary={true}
+                        disabled={this.state.disabled}
+                    />
                 </div>
             </div>
         )
     }
 }
+
+export default Step1;
