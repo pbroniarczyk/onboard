@@ -1,4 +1,3 @@
-import './css/main.sass';
 import React from 'react';
 
 // Material-ui
